@@ -31,9 +31,9 @@ void APIENTRY opengelDebugCallback(GLenum source, GLenum type, GLuint id, GLenum
 };
 
 int main(int argc, char** argv) {
-	string Filename_aorta = "Aorta_mesh.vtk";
-	//string Filename_aorta = "Aorta_pathlines.vtk";
-	bool isLinedata = false;
+	//string Filename_aorta = "Aorta_mesh.vtk";
+	string Filename_aorta = "Aorta_pathlines.vtk";
+	bool isLinedata = true;
 	//cout << "Hello world";
 
 	SDL_Window* window;

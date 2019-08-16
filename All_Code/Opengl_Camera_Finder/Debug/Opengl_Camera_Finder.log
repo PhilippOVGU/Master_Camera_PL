@@ -1,0 +1,19 @@
+﻿D:\Programme\Microsoft Visual Studio\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (opengeltutorial.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(39,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(190,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(191,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(192,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(223,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(224,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(225,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(138,42): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(139,45): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(171,33): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(178,35): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(287,56): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(287,37): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(305,34): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(349,29): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(353,33): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+  Opengl_Camera_Finder.vcxproj -> C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\Debug\Opengl_Camera_Finder.exe

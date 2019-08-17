@@ -29,28 +29,28 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="defines.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="shader.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="index_buffer.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>libs</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex_buffer2.h">
+    <ClInclude Include="camera.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="camera.h">
+    <ClInclude Include="defines.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="fps_cemera.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="index_buffer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="readVTK.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="shader.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex_buffer2.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

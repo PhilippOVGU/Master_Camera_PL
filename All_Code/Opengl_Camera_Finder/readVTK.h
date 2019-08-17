@@ -58,7 +58,7 @@ vector<uint32_t> readIndices_Line(string Filename) {
 			//indices.push_back(stoi(line_str, &sz));
 
 		}
-		//cout << line_str << endl;;
+		
 		if (line_str == "LINES")
 		{
 			StartIndexSection = 1;
@@ -223,9 +223,9 @@ vector<Vertex> readVertices(string filename) {
 		vertices[i].x = vertices[i].x / maximum;
 		vertices[i].y = vertices[i].y / maximum;
 		vertices[i].z = vertices[i].z / maximum;
-		//cout << "in for schleif  " << vertices.size() << endl;
+		
 	}
-	//cout << "Anzahl der Vertices: "<<vertices.size() << endl;
+	
 	Vertex_str.close();
 	return vertices;
 }

@@ -50,9 +50,9 @@ int main(int argc, char** argv) {
 	//	isLinedata = false;
 	//}
 	//cout << "islinedata: " << isLinedata << endl;
-	//string Filename_aorta = "Aorta_mesh.vtk";
+	string Filename_aorta = "Aorta_mesh.vtk";
 	//string Filename_aorta = "prisma.vtk";
-	string Filename_aorta = "cube.vtk";
+	//string Filename_aorta = "cube.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
 	bool isLinedata = false;
 
@@ -104,40 +104,7 @@ int main(int argc, char** argv) {
 	
 
 
-		// loading modle from obj data
 		uint64_t numIndices = 0;
-	//std::ifstream input = std::ifstream("cube.bmf", std::ios::in | std::ios::binary); 
-
-	//num_elements = sizeof(indices) / sizeof(indices[0]);
-	/*if (!input.is_open())
-	{
-		std::cout << "error reading modle file" << std::endl;
-		return 1;
-	}
-	
-	input.read((char*)&numVertices, sizeof(uint64_t));
-	input.read((char*)&numIndices, sizeof(uint64_t));*/
-	
-	//loading cube
-	//for (uint64_t i = 0; i < numVertices; i++)
-	//{
-	//	Vertex vertex;
-	//	input.read((char*)& vertex.x, sizeof(float));
-	//	input.read((char*)& vertex.y, sizeof(float));
-	//	input.read((char*)& vertex.z, sizeof(float));
-	//	vertex.r = 1.0f;
-	//	vertex.g = 1.0f;
-	//	vertex.b = 1.0f;
-	//	vertex.a = 1.0f;
-	//	vertices.push_back(vertex);
-	//}
-	//
-	//for (uint64_t i = 0; i < numIndices; i++)
-	//{
-	//	uint32_t index;
-	//	input.read((char*)&index, sizeof(uint32_t));
-	//	indices.push_back(index);
-	//}
 
 	// loading aorta
 	cout << "Loading in data....(this may take a few seconds)" << endl;
@@ -148,7 +115,7 @@ int main(int argc, char** argv) {
 	}
 	else
 	{
-		normals = readNormls(Filename_aorta);
+		vertices = readNormls(Filename_aorta,vertices);
 		indices = readIndices_Vertex(Filename_aorta);
 	}
 	

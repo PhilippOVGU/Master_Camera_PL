@@ -20,6 +20,9 @@ struct Vertex
 	float b;
 	float a;
 
-	glm::vec3 normal;
+	float nx;
+	float ny;
+	float nz;
 
+	
 };

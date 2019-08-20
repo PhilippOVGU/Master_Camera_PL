@@ -7,14 +7,15 @@
 
 using namespace std;
 
-vector<Position> readNormls(string Filename) {
-	vector<Position> Normals;
+vector<Vertex> readNormls(string Filename,vector<Vertex> vertices) {
+	//vector<Position> Normals;
 	ifstream Nromals_str;
 	Nromals_str.open(Filename);
 	string line_str;
 	string::size_type sz;
 	int zahler = 0;
 	int cordicounter = 1;
+	int vertexcounter = 0;
 	float cordix, cordiy, cordiz;
 	int startNormalSection = 0;
 	bool endNormalSection = false;
@@ -62,11 +63,11 @@ vector<Position> readNormls(string Filename) {
 				// pushing values in vertices vector;
 				Position normalVector;
 
-				normalVector.x = cordix;
-				normalVector.y = cordiy;
-				normalVector.z = cordiz;
-
-				Normals.push_back(normalVector);
+				vertices[vertexcounter].nx = cordix;
+				vertices[vertexcounter].ny = cordiy;
+				vertices[vertexcounter].nz = cordiz;
+				vertexcounter++;
+				
 				break;
 			default:
 				cerr << "Error with Cordicounter somehow" << endl;
@@ -78,7 +79,7 @@ vector<Position> readNormls(string Filename) {
 		zahler++;
 	}
 
-	return Normals;
+	return vertices;
 }
 
 vector<uint32_t> readIndices_Line(string Filename) {

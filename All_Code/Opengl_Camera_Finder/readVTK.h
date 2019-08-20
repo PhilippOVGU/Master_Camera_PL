@@ -7,6 +7,80 @@
 
 using namespace std;
 
+vector<Position> readNormls(string Filename) {
+	vector<Position> Normals;
+	ifstream Nromals_str;
+	Nromals_str.open(Filename);
+	string line_str;
+	string::size_type sz;
+	int zahler = 0;
+	int cordicounter = 1;
+	float cordix, cordiy, cordiz;
+	int startNormalSection = 0;
+	bool endNormalSection = false;
+	while (!Nromals_str.eof())
+	{
+		Nromals_str >> line_str;
+		if (line_str== "POINT_DATA")
+		{
+			startNormalSection = 1; //übergangszustand --> start gefunden jetzt zählen bis eigentliche daten anfangen
+			zahler = 0;
+		}
+		if (startNormalSection==1&&zahler==8)
+		{
+			startNormalSection = 2;
+			endNormalSection = false;
+		}
+	
+		if (startNormalSection==2&& line_str== "SCALARS")
+		{
+			endNormalSection = true;
+		}
+
+
+
+		if (startNormalSection == 2 && !endNormalSection ) // conditions met start reading secton 
+		{
+			int test = 0;
+			switch (cordicounter)
+			{
+			case 1:
+				cordix = stof(line_str, &sz);
+				cordicounter++;
+
+				break;
+			case 2:
+				cordiy = stof(line_str, &sz);
+
+				cordicounter++;
+				break;
+			case 3:
+				cordiz = stof(line_str, &sz);
+				
+
+				cordicounter = 1;
+				// pushing values in vertices vector;
+				Position normalVector;
+
+				normalVector.x = cordix;
+				normalVector.y = cordiy;
+				normalVector.z = cordiz;
+
+				Normals.push_back(normalVector);
+				break;
+			default:
+				cerr << "Error with Cordicounter somehow" << endl;
+				break;
+			}
+
+		}
+
+		zahler++;
+	}
+
+	return Normals;
+}
+
 vector<uint32_t> readIndices_Line(string Filename) {
 	vector<uint32_t> indices;
 	ifstream Indices_str;

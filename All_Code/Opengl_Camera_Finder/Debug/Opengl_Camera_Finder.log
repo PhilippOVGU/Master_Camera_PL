@@ -1,18 +1,20 @@
 ﻿  main.cpp
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(39,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(190,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(191,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(192,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(223,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(224,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(225,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(158,42): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(159,45): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(191,33): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(198,35): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(315,57): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(315,38): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(340,34): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(384,29): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(388,33): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(113,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(264,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(265,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(266,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(297,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(298,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(299,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(160,42): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(161,45): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(193,33): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(200,35): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(317,57): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(317,38): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(342,34): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(386,29): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+  shadder.cpp
+  Generating Code...
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(390,33): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
   Opengl_Camera_Finder.vcxproj -> C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\Debug\Opengl_Camera_Finder.exe

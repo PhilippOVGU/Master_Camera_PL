@@ -50,8 +50,9 @@ int main(int argc, char** argv) {
 	//	isLinedata = false;
 	//}
 	//cout << "islinedata: " << isLinedata << endl;
-	string Filename_aorta = "Aorta_mesh.vtk";
+	//string Filename_aorta = "Aorta_mesh.vtk";
 	//string Filename_aorta = "prisma.vtk";
+	string Filename_aorta = "cube.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
 	bool isLinedata = false;
 
@@ -96,7 +97,7 @@ int main(int argc, char** argv) {
 	std::vector<Vertex> vertices;
 	int num_elements = 0;
 	
-
+	std::vector<Position> normals;
 
 	uint64_t numVertices = 0;
 	std::vector<uint32_t> indices;
@@ -147,6 +148,7 @@ int main(int argc, char** argv) {
 	}
 	else
 	{
+		normals = readNormls(Filename_aorta);
 		indices = readIndices_Vertex(Filename_aorta);
 	}
 	
@@ -230,7 +232,7 @@ int main(int argc, char** argv) {
 	bool buttonA = false;
 	bool buttonD = false;
 	float cameraSpeed = 6.0f;
-	
+		
 	glEnable(GL_CULL_FACE); //enables culling(hide not shown triangle)
 	glEnable(GL_DEPTH_TEST); // Tiefentest --> vorgrund überdeckt hintergrund
 

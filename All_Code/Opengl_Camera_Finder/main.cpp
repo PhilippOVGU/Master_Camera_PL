@@ -32,28 +32,28 @@ void APIENTRY opengelDebugCallback(GLenum source, GLenum type, GLuint id, GLenum
 
 int main(int argc, char** argv) {
 	//error catching for console useage
-	if (argc<3)
-	{
-		cout << "Missing Arguments in console --> Usage: Opengl_camera_finder.exe nameofvtkfile mesh/lines" << endl;
-		return 1;
-	}
-	//reading in filename and if data is pathlines or mesh
-	string Filename_aorta = argv[1];
-	bool isLinedata = false;
-	//cout << "argv[2] :" << argv[2] << endl;
-	string checkargv2 = argv[2];
-	if (checkargv2 =="lines")
-	{
-		isLinedata = true;
-	}
-	else {
-		isLinedata = false;
-	}
-	cout << "islinedata: " << isLinedata << endl;
-	//string Filename_aorta = "Aorta_mesh.vtk";
+	//if (argc<3)
+	//{
+	//	cout << "Missing Arguments in console --> Usage: Opengl_camera_finder.exe nameofvtkfile mesh/lines" << endl;
+	//	return 1;
+	//}
+	////reading in filename and if data is pathlines or mesh
+	//string Filename_aorta = argv[1];
+	//bool isLinedata = false;
+	////cout << "argv[2] :" << argv[2] << endl;
+	//string checkargv2 = argv[2];
+	//if (checkargv2 =="lines")
+	//{
+	//	isLinedata = true;
+	//}
+	//else {
+	//	isLinedata = false;
+	//}
+	//cout << "islinedata: " << isLinedata << endl;
+	string Filename_aorta = "Aorta_mesh.vtk";
 	//string Filename_aorta = "prisma.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
-	//isLinedata = true;
+	bool isLinedata = false;
 
 
 	SDL_Window* window;
@@ -231,11 +231,13 @@ int main(int argc, char** argv) {
 	bool buttonD = false;
 	float cameraSpeed = 6.0f;
 	
+	glEnable(GL_CULL_FACE); //enables culling(hide not shown triangle)
+	glEnable(GL_DEPTH_TEST); // Tiefentest --> vorgrund überdeckt hintergrund
 
 	while (true) {
 		
 		
-		
+
 		bool close = false;
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) { // checke ob event auftritt
@@ -276,6 +278,10 @@ int main(int argc, char** argv) {
 					case SDLK_d:
 						buttonD = true;
 						break;
+					case SDLK_ESCAPE:
+						SDL_SetRelativeMouseMode(SDL_FALSE);
+						break;
+						
 					default:
 						break;
 					}
@@ -304,9 +310,18 @@ int main(int argc, char** argv) {
 			}
 			else if (event.type==SDL_MOUSEMOTION)
 			{
-				camera.onMouseMoved(event.motion.xrel, event.motion.yrel);
+				if (SDL_GetRelativeMouseMode())
+				{
+					camera.onMouseMoved(event.motion.xrel, event.motion.yrel);
+				}
+				
 			}
-
+			else if (event.type==SDL_MOUSEBUTTONDOWN)
+			{
+				if (event.button.button == SDL_BUTTON_LEFT) {
+					SDL_SetRelativeMouseMode(SDL_TRUE);
+				}
+			}
 			
 		}
 
@@ -351,7 +366,7 @@ int main(int argc, char** argv) {
 
 
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 		
 		//rotation:
 		model = glm::rotate(model, 0.25f * delta, glm::vec3(0.125f, 0.25f, 0));

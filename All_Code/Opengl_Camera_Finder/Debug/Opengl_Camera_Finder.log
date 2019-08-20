@@ -11,9 +11,9 @@ C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\
 C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(128,45): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
 C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(160,33): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
 C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(167,35): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(284,57): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(284,38): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(309,34): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(353,29): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(357,33): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(286,57): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(286,38): warning C4244:  'argument': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(311,34): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(362,29): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(366,33): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
   Opengl_Camera_Finder.vcxproj -> C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\Debug\Opengl_Camera_Finder.exe

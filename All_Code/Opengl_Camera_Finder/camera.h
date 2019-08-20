@@ -15,6 +15,9 @@ public:
 		update();
 	};
 	//~Camera();
+	glm::mat4 getView() {
+		return view;
+	}
 	glm::mat4 getViewProj() {
 		return viewProj;
 	}

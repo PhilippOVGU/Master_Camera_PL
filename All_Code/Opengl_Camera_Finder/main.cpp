@@ -188,6 +188,8 @@ int main(int argc, char** argv) {
 	
 	glm::mat4 modelViewProj = projection * model;
 	int modelViewProjMatrixLocation = glGetUniformLocation(shader.getShaderId(), "u_modelViewProj");
+	int modelViewLocation = glGetUniformLocation(shader.getShaderId(), "u_modelView");
+	int invModelViewLocation = glGetUniformLocation(shader.getShaderId(), "u_invModelView");
 
 	glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -4.0f));
 
@@ -342,9 +344,16 @@ int main(int argc, char** argv) {
 		modelViewProj = camera.getViewProj()* model;
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // wireframe modus
 
+		// lighting matrixes
+		glm::mat4 modelView = camera.getView()*model;
+		glm::mat4 invModelView = glm::transpose(glm::inverse(modelView));
+		//texture stuff
 		vertexBuffer.bind();
 		vertexBuffer.bind();
-		glUniformMatrix4fv(modelViewProjMatrixLocation, 1, GL_FALSE, &modelViewProj[0][0]);
+		glUniformMatrix4fv(modelViewProjMatrixLocation, 1, GL_FALSE, &modelViewProj[0][0]); //übergibt die prjection matrix an den shader
+		glUniformMatrix4fv(modelViewLocation, 1, GL_FALSE, &modelView[0][0]); //übergabe der view matrix an den shader
+		glUniformMatrix4fv(invModelViewLocation, 1, GL_FALSE, &invModelView[0][0]); //übergabe der view matrix an den shader
+
 		indexBuffer.bind();
 		glActiveTexture(GL_TEXTURE0);
 	

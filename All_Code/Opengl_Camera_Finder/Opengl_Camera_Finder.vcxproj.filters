@@ -73,5 +73,11 @@
     <None Include="Aorta_pathlines.vtk">
       <Filter>Ressourcendateien</Filter>
     </None>
+    <None Include="basic_lines.fs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="basic_lines.vs">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

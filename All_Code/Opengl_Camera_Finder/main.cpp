@@ -32,29 +32,29 @@ void APIENTRY opengelDebugCallback(GLenum source, GLenum type, GLuint id, GLenum
 
 int main(int argc, char** argv) {
 	//error catching for console useage
-	//if (argc<3)
-	//{
-	//	cout << "Missing Arguments in console --> Usage: Opengl_camera_finder.exe nameofvtkfile mesh/lines" << endl;
-	//	return 1;
-	//}
-	////reading in filename and if data is pathlines or mesh
-	//string Filename_aorta = argv[1];
-	//bool isLinedata = false;
-	////cout << "argv[2] :" << argv[2] << endl;
-	//string checkargv2 = argv[2];
-	//if (checkargv2 =="lines")
-	//{
-	//	isLinedata = true;
-	//}
-	//else {
-	//	isLinedata = false;
-	//}
+	if (argc<3)
+	{
+		cout << "Missing Arguments in console --> Usage: Opengl_camera_finder.exe nameofvtkfile mesh/lines" << endl;
+		return 1;
+	}
+	//reading in filename and if data is pathlines or mesh
+	string Filename_aorta = argv[1];
+	bool isLinedata = false;
+	//cout << "argv[2] :" << argv[2] << endl;
+	string checkargv2 = argv[2];
+	if (checkargv2 =="lines")
+	{
+		isLinedata = true;
+	}
+	else {
+		isLinedata = false;
+	}
 	//cout << "islinedata: " << isLinedata << endl;
-	string Filename_aorta = "Aorta_mesh.vtk";
+	//string Filename_aorta = "Aorta_mesh.vtk";
 	//string Filename_aorta = "prisma.vtk";
 	//string Filename_aorta = "cube.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
-	bool isLinedata = false;
+	//bool isLinedata = true;
 
 
 	SDL_Window* window;
@@ -154,6 +154,8 @@ int main(int argc, char** argv) {
 
 	Shader shader("basic.vs", "basic.fs");
 	shader.bind();
+
+	
 	
 	// dynamische veränderung der farbe
 	int colorUniformLocation = glGetUniformLocation(shader.getShaderId(), "u_color");

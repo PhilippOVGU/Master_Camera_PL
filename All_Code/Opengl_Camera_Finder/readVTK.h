@@ -7,8 +7,52 @@
 
 using namespace std;
 
+vector<Vertex> read_wss_mag(string Filename, vector<Vertex> vertices) {
+	ifstream Nromals_str;
+	Nromals_str.open(Filename);
+	string line_str;
+	string::size_type sz;
+	int start_wss_meg_section = 0;
+	bool end_wss_meg_section = false;
+	int zahler = 0;
+	int vertexcounter = 0;
+	float maximum = 0;
+	while (!Nromals_str.eof()) {
+		Nromals_str >> line_str;
+
+		if (line_str=="wss_mag_t_0")
+		{
+			start_wss_meg_section = 1;
+			zahler = 0;
+		}
+		if (start_wss_meg_section==1 && zahler==5)
+		{
+			start_wss_meg_section = 2;
+		}
+		if (start_wss_meg_section==2&&line_str=="SCALARS")
+		{
+			end_wss_meg_section = true;
+		}
+		if (start_wss_meg_section==2&& !end_wss_meg_section)
+		{
+			if (maximum< stof(line_str, &sz))
+			{
+				maximum = stof(line_str, &sz);
+			}
+			vertices[vertexcounter].r = -10*stof(line_str, &sz)+5;
+			vertices[vertexcounter].g = 0;
+			vertices[vertexcounter].b = 6* stof(line_str, &sz);
+			//stof(line_str, &sz)
+			vertexcounter++;
+		}
+		zahler++;
+	}
+	cout << "Maximum ist: " << maximum << endl;
+	return vertices;
+}
+
 vector<Vertex> readNormls(string Filename,vector<Vertex> vertices) {
-	//vector<Position> Normals;
+	
 	ifstream Nromals_str;
 	Nromals_str.open(Filename);
 	string line_str;

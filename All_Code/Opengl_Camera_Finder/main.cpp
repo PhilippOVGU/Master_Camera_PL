@@ -95,6 +95,7 @@ int main(int argc, char** argv) {
 
 	
 	std::vector<Vertex> vertices;
+	std::vector<Vertex> vertices2;
 	int num_elements = 0;
 	
 	std::vector<Position> normals;
@@ -116,11 +117,19 @@ int main(int argc, char** argv) {
 	else
 	{
 		vertices = readNormls(Filename_aorta,vertices);
+		vertices2 = vertices;
 		vertices=read_wss_mag(Filename_aorta, vertices);
+		vertices2 = read_wss_mag2(Filename_aorta, vertices2);
 		indices = readIndices_Vertex(Filename_aorta);
 	}
+	//test delete later
 	
-	
+	vector<vector<Vertex>> vertices_matrix;
+	vertices_matrix = read_all_wss_mag(Filename_aorta, vertices);
+	cout << "done with loading" << endl;
+	//test delete later
+
+
 	numIndices = indices.size();
 	numVertices = vertices.size();
 
@@ -207,7 +216,16 @@ int main(int argc, char** argv) {
 		
 	glEnable(GL_CULL_FACE); //enables culling(hide not shown triangle)
 	glEnable(GL_DEPTH_TEST); // Tiefentest --> vorgrund überdeckt hintergrund
+	
 
+
+	// varables and calculations for changing surface depended on time
+	int maxtime = 20; //länge der annimation
+	int surfacecounter = 0;
+	int start_timeframe = 0;
+	int end_timeframe = 0;
+	bool changdata = true;
+	int numtimesteps = count_timesteps(Filename_aorta);
 	while (true) {
 		
 		
@@ -339,6 +357,31 @@ int main(int argc, char** argv) {
 
 
 
+		// Change surface time dependend
+		if (surfacecounter<numtimesteps+1) //numtimesteps+1 because if(time >start_timeframe..) is false at the start (at t=0) and as a result surfacecounter skipps 0
+		{
+
+			if (time >= (start_timeframe * surfacecounter) && time < ((end_timeframe + maxtime/numtimesteps) * surfacecounter))
+			{
+				if (changdata)
+				{
+					cout << surfacecounter << endl;
+					vertexBuffer.newData(vertices_matrix[surfacecounter - 1].data(), numVertices); // surfacecounter-1 because if(time >start_timeframe..) is false at the start (t=0) and surfacecounter skipps 0
+					changdata = false;
+				}
+			}
+			else
+			{
+				surfacecounter++;
+				changdata = true;
+			}
+		}
+		
+		
+		
+		
+		
+
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 		
@@ -351,7 +394,8 @@ int main(int argc, char** argv) {
 		glm::mat4 modelView = camera.getView()*model;
 		glm::mat4 invModelView = glm::transpose(glm::inverse(modelView));
 		//texture stuff
-		vertexBuffer.bind();
+		
+
 		vertexBuffer.bind();
 		glUniformMatrix4fv(modelViewProjMatrixLocation, 1, GL_FALSE, &modelViewProj[0][0]); //übergibt die prjection matrix an den shader
 		glUniformMatrix4fv(modelViewLocation, 1, GL_FALSE, &modelView[0][0]); //übergabe der view matrix an den shader
@@ -376,7 +420,7 @@ int main(int argc, char** argv) {
 
 
 
-
+		//cout << time << endl;
 		
 		
 		

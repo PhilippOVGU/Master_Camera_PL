@@ -7,6 +7,130 @@
 
 using namespace std;
 
+int count_timesteps(string Filename) {
+	ifstream stream_str;
+	stream_str.open(Filename);
+	string line_str;
+	int num_timesteps = 0;
+	while (!stream_str.eof()) {
+		stream_str >> line_str;
+		if (line_str.find("wss_mag") != std::string::npos) {
+			//cout << "found!" << endl;
+			num_timesteps++;
+		}
+	}
+	cout << "Number of timesteps: " << num_timesteps << endl;
+	
+	/*string combined = to_string(num_timesteps);
+	cout << "wss_mag_t_" + combined << endl;*/
+	return num_timesteps;
+	stream_str.close();
+}
+
+vector<vector<Vertex>> read_all_wss_mag(string Filename, vector<Vertex> vertices) {
+	vector < vector<Vertex>> vertices_matrix;
+	int timesteps = count_timesteps(Filename);
+	ifstream wss_mag_str;
+	
+	string line_str;
+	string::size_type sz;
+	// varable declaration
+
+	int start_wss_meg_section = 0;
+	bool end_wss_meg_section = false;
+	int zahler = 0;
+	int vertexcounter = 0;
+	string wss_mag_t;
+	for (size_t i = 0; i < timesteps; i++)
+	{
+		// variable reset between vertices
+		start_wss_meg_section = 0;
+		end_wss_meg_section = false;
+		zahler = 0;
+		vertexcounter = 0;
+		wss_mag_t = "wss_mag_t_" + to_string(i);
+		//cout << wss_mag_t << endl;
+		wss_mag_str.open(Filename);
+		while (!wss_mag_str.eof()) {
+			wss_mag_str >> line_str;
+
+			if (line_str == wss_mag_t)
+			{
+				start_wss_meg_section = 1;
+				zahler = 0;
+			}
+			if (start_wss_meg_section == 1 && zahler == 5)
+			{
+				start_wss_meg_section = 2;
+			}
+			if (start_wss_meg_section == 2 && line_str == "SCALARS")
+			{
+				end_wss_meg_section = true;
+			}
+			if (start_wss_meg_section == 2 && !end_wss_meg_section)
+			{
+				//cout << "bin in lese bedingung!" << endl;
+				vertices[vertexcounter].r = -10 * stof(line_str, &sz) + 5;
+				vertices[vertexcounter].g = 0;
+				vertices[vertexcounter].b = 6 * stof(line_str, &sz);
+				vertexcounter++;
+			}
+			zahler++;
+		}
+		wss_mag_str.close();
+
+		vertices_matrix.push_back(vertices);
+
+
+	}
+	return vertices_matrix;
+
+}
+
+vector<Vertex> read_wss_mag2(string Filename, vector<Vertex> vertices) {
+	ifstream Nromals_str;
+	Nromals_str.open(Filename);
+	string line_str;
+	string::size_type sz;
+	int start_wss_meg_section = 0;
+	bool end_wss_meg_section = false;
+	int zahler = 0;
+	int vertexcounter = 0;
+	float maximum = 0;
+	while (!Nromals_str.eof()) {
+		Nromals_str >> line_str;
+
+		if (line_str == "wss_mag_t_1")
+		{
+			start_wss_meg_section = 1;
+			zahler = 0;
+		}
+		if (start_wss_meg_section == 1 && zahler == 5)
+		{
+			start_wss_meg_section = 2;
+		}
+		if (start_wss_meg_section == 2 && line_str == "SCALARS")
+		{
+			end_wss_meg_section = true;
+		}
+		if (start_wss_meg_section == 2 && !end_wss_meg_section)
+		{
+			if (maximum < stof(line_str, &sz))
+			{
+				maximum = stof(line_str, &sz);
+			}
+			vertices[vertexcounter].r = -10 * stof(line_str, &sz) + 5;
+			vertices[vertexcounter].g = 0;
+			vertices[vertexcounter].b = 6 * stof(line_str, &sz);
+			//stof(line_str, &sz)
+			vertexcounter++;
+		}
+		zahler++;
+	}
+	//cout << "Maximum ist: " << maximum << endl;
+	return vertices;
+}
+
 vector<Vertex> read_wss_mag(string Filename, vector<Vertex> vertices) {
 	ifstream Nromals_str;
 	Nromals_str.open(Filename);
@@ -47,7 +171,7 @@ vector<Vertex> read_wss_mag(string Filename, vector<Vertex> vertices) {
 		}
 		zahler++;
 	}
-	cout << "Maximum ist: " << maximum << endl;
+	//cout << "Maximum ist: " << maximum << endl;
 	return vertices;
 }
 

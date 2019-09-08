@@ -155,10 +155,8 @@
   <ItemGroup>
     <None Include="Aorta_mesh.vtk" />
     <None Include="Aorta_pathlines.vtk" />
-    <None Include="basic.fs" />
-    <None Include="basic.vs" />
-    <None Include="basic_lines.fs" />
-    <None Include="basic_lines.vs" />
+    <None Include="basic_fs.glsl" />
+    <None Include="basic_vs.glsl" />
     <None Include="cube.vtk" />
     <None Include="triangle.vtk" />
   </ItemGroup>

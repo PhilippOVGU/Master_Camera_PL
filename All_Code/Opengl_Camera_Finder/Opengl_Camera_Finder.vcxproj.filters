@@ -55,12 +55,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="basic.fs">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="basic.vs">
-      <Filter>shaders</Filter>
-    </None>
     <None Include="Aorta_mesh.vtk">
       <Filter>Ressourcendateien</Filter>
     </None>
@@ -73,10 +67,10 @@
     <None Include="Aorta_pathlines.vtk">
       <Filter>Ressourcendateien</Filter>
     </None>
-    <None Include="basic_lines.fs">
+    <None Include="basic_vs.glsl">
       <Filter>shaders</Filter>
     </None>
-    <None Include="basic_lines.vs">
+    <None Include="basic_fs.glsl">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>

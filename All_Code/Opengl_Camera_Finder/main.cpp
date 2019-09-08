@@ -212,6 +212,8 @@ int main(int argc, char** argv) {
 	bool buttonS = false;
 	bool buttonA = false;
 	bool buttonD = false;
+	bool buttonQ = false;
+	bool buttonE = false;
 	float cameraSpeed = 6.0f;
 		
 	glEnable(GL_CULL_FACE); //enables culling(hide not shown triangle)
@@ -220,7 +222,7 @@ int main(int argc, char** argv) {
 
 
 	// varables and calculations for changing surface depended on time
-	int maxtime = 20; //länge der annimation
+	int maxtime = 40; //länge der annimation
 	int surfacecounter = 0;
 	int start_timeframe = 0;
 	int end_timeframe = 0;
@@ -270,6 +272,12 @@ int main(int argc, char** argv) {
 					case SDLK_d:
 						buttonD = true;
 						break;
+					case SDLK_q:
+						buttonQ = true;
+						break;
+					case SDLK_e:
+						buttonE = true;
+						break;
 					case SDLK_ESCAPE:
 						SDL_SetRelativeMouseMode(SDL_FALSE);
 						break;
@@ -296,11 +304,18 @@ int main(int argc, char** argv) {
 				case SDLK_d:
 					buttonD = false;
 					break;
+				case SDLK_q:
+					buttonQ = false;
+					break;
+				case SDLK_e:
+					buttonE = false;
+					break;
 				default:
 					break;
 					}
 			}
-			else if (event.type==SDL_MOUSEMOTION)
+			// mouse camera movment
+			/*else if (event.type==SDL_MOUSEMOTION)
 			{
 				if (SDL_GetRelativeMouseMode())
 				{
@@ -313,7 +328,7 @@ int main(int argc, char** argv) {
 				if (event.button.button == SDL_BUTTON_LEFT) {
 					SDL_SetRelativeMouseMode(SDL_TRUE);
 				}
-			}
+			}*/
 			
 		}
 
@@ -332,26 +347,38 @@ int main(int argc, char** argv) {
 		if (!colorUniformLocation != -1) {
 			glUniform4f(colorUniformLocation, sinf(time)*sinf(time), 0.1f, 0.1f, 1.0f);
 		}
-
-		if (buttonW)
+		if (buttonQ)
 		{
-			
-			camera.moveFront(-delta* cameraSpeed);
+			camera.moveFront(-delta * cameraSpeed);
 			camera.update();
 		}
-		if (buttonS)
+		if (buttonE)
 		{
 			camera.moveFront(delta* cameraSpeed);
 			camera.update();
 		}
+		if (buttonW)
+		{
+			model = glm::rotate(model, 0.5f * delta, glm::vec3(0.5f, 0.0f, 0));
+			//camera.moveFront(-delta* cameraSpeed);
+			camera.update();
+		}
+		if (buttonS)
+		{
+			model = glm::rotate(model, 0.5f * delta, glm::vec3(-0.5f, 0.0f, 0));
+			//camera.moveFront(delta* cameraSpeed);
+			camera.update();
+		}
 		if (buttonA)
 		{
-			camera.moveSidways(-delta* cameraSpeed);
+			model = glm::rotate(model, 0.5f * delta, glm::vec3(0, 0.5f, 0));
+			//camera.moveSidways(-delta* cameraSpeed);
 			camera.update();
 		}
 		if (buttonD)
 		{
-			camera.moveSidways(delta* cameraSpeed); 
+			model = glm::rotate(model, 0.5f * delta, glm::vec3(0, -0.5f, 0));
+			//camera.moveSidways(delta* cameraSpeed); 
 			camera.update();
 		}
 
@@ -386,7 +413,7 @@ int main(int argc, char** argv) {
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 		
 		//rotation:
-		model = glm::rotate(model, 0.25f * delta, glm::vec3(0.125f, 0.25f, 0));
+		//model = glm::rotate(model, 0.25f * delta, glm::vec3(0.125f, 0.25f, 0));
 		modelViewProj = camera.getViewProj()* model;
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // wireframe modus
 
@@ -427,7 +454,7 @@ int main(int argc, char** argv) {
 		
 		
 		
-		
+	
 		
 
 	

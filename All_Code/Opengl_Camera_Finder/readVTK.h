@@ -5,6 +5,7 @@
 #include <vector>
 #include "defines.h"
 
+
 using namespace std;
 
 int count_timesteps(string Filename) {
@@ -14,7 +15,7 @@ int count_timesteps(string Filename) {
 	int num_timesteps = 0;
 	while (!stream_str.eof()) {
 		stream_str >> line_str;
-		if (line_str.find("wss_mag") != std::string::npos) {
+		if (line_str.find("wss_mag_t") != std::string::npos) {
 			//cout << "found!" << endl;
 			num_timesteps++;
 		}
@@ -31,7 +32,7 @@ vector<vector<Vertex>> read_all_wss_mag(string Filename, vector<Vertex> vertices
 	vector < vector<Vertex>> vertices_matrix;
 	int timesteps = count_timesteps(Filename);
 	ifstream wss_mag_str;
-	
+	cout << "reading wss_mag" << endl;
 	string line_str;
 	string::size_type sz;
 	// varable declaration
@@ -41,48 +42,62 @@ vector<vector<Vertex>> read_all_wss_mag(string Filename, vector<Vertex> vertices
 	int zahler = 0;
 	int vertexcounter = 0;
 	string wss_mag_t;
-	for (size_t i = 0; i < timesteps; i++)
-	{
-		// variable reset between vertices
-		start_wss_meg_section = 0;
-		end_wss_meg_section = false;
-		zahler = 0;
-		vertexcounter = 0;
-		wss_mag_t = "wss_mag_t_" + to_string(i);
-		//cout << wss_mag_t << endl;
-		wss_mag_str.open(Filename);
-		while (!wss_mag_str.eof()) {
-			wss_mag_str >> line_str;
+	int counter_timesteps = 0;
+	float startColor[3] = {0.9411,0.231,0.1254 };
+	float endColor[3] = { 1,0.9294,0.62745 };
+	float percentage;
+	
+	
+	wss_mag_t = "wss_mag_t_" + to_string(counter_timesteps);
 
-			if (line_str == wss_mag_t)
-			{
-				start_wss_meg_section = 1;
-				zahler = 0;
-			}
-			if (start_wss_meg_section == 1 && zahler == 5)
-			{
-				start_wss_meg_section = 2;
-			}
-			if (start_wss_meg_section == 2 && line_str == "SCALARS")
-			{
-				end_wss_meg_section = true;
-			}
-			if (start_wss_meg_section == 2 && !end_wss_meg_section)
-			{
-				//cout << "bin in lese bedingung!" << endl;
-				vertices[vertexcounter].r = -10 * stof(line_str, &sz) + 5;
-				vertices[vertexcounter].g = 0;
-				vertices[vertexcounter].b = 6 * stof(line_str, &sz);
-				vertexcounter++;
-			}
-			zahler++;
+	wss_mag_str.open(Filename);
+
+	while (!wss_mag_str.eof()) {
+		wss_mag_str >> line_str;
+
+		if (line_str == wss_mag_t)
+		{
+			start_wss_meg_section = 1;
+			zahler = 0;
 		}
-		wss_mag_str.close();
-
-		vertices_matrix.push_back(vertices);
-
-
+		if (start_wss_meg_section == 1 && zahler == 5)
+		{
+			start_wss_meg_section = 2;
+		}
+		if (start_wss_meg_section == 2 && line_str == "SCALARS")
+		{
+			end_wss_meg_section = true;
+		}
+		if (start_wss_meg_section == 2 && !end_wss_meg_section)
+		{
+			//cout << "bin in lese bedingung!" << endl;
+			//vertices[vertexcounter].r = -10 * stof(line_str, &sz) + 5;
+			//vertices[vertexcounter].g = 0;
+			//vertices[vertexcounter].b = 6 * stof(line_str, &sz);
+			percentage = stof(line_str, &sz)/0.4f;
+			vertices[vertexcounter].r = (startColor[0] * (1 - percentage)) + (endColor[0] * percentage);
+			vertices[vertexcounter].g = (startColor[1] * (1 - percentage)) + (endColor[1] * percentage);
+			vertices[vertexcounter].b = (startColor[2] * (1 - percentage)) + (endColor[2] * percentage);
+			vertexcounter++;
+			if (vertexcounter==vertices.size())
+			{	// variable reset between vertices
+				counter_timesteps++;
+				wss_mag_t = "wss_mag_t_" + to_string(counter_timesteps);
+				start_wss_meg_section = 0;
+				end_wss_meg_section = false;
+				zahler = 0;
+				vertexcounter = 0;
+				vertices_matrix.push_back(vertices);
+			}
+		}
+		zahler++;
 	}
+	wss_mag_str.close();
+
+	
+
+
+	//}
 	return vertices_matrix;
 
 }
@@ -171,7 +186,7 @@ vector<Vertex> read_wss_mag(string Filename, vector<Vertex> vertices) {
 		}
 		zahler++;
 	}
-	//cout << "Maximum ist: " << maximum << endl;
+	cout << "Maximum ist: " << maximum << endl;
 	return vertices;
 }
 

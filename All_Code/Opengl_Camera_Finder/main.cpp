@@ -160,7 +160,7 @@ int main(int argc, char** argv) {
 	}
 
 
-	Shader shader("basic_vs.glsl", "basic_fs.glsl");
+	Shader shader("basic_vs.glsl","basic_gs.glsl", "basic_fs.glsl");
 	shader.bind();
 
 	

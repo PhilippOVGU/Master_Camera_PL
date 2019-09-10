@@ -2,12 +2,14 @@
 #include <GL/glew.h>
 #include "defines.h"
 
+
 struct VertexBuffer
 {
 	VertexBuffer(void* data, uint32_t numVertices) {
 		glGenVertexArrays(1, &vao);
 		glBindVertexArray(vao);
-
+		GLuint bufferID = rand() % 100;
+		std::cout << "Buffer id: " << bufferID << std::endl;
 		glGenBuffers(1, &bufferID); // creates the id for the buffer and uses that id
 		glBindBuffer(GL_ARRAY_BUFFER, bufferID); // creates the id for the buffer and uses that id
 		glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(Vertex), data, GL_STATIC_DRAW);

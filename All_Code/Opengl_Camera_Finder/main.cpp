@@ -51,11 +51,11 @@ int main(int argc, char** argv) {
 	//}
 	//cout << "islinedata: " << isLinedata << endl;
 	//string Filename_aorta = "Aorta_mesh.vtk";
-	//string Filename_aorta = "cube.vtk";
+	string Filename_aorta = "cube.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
-	string Filename_aorta = "cube_pathlines.vtk";
-	//bool isLinedata = false;
-	bool isLinedata = true;
+	//string Filename_aorta = "cube_pathlines.vtk";
+	bool isLinedata = false;
+	//bool isLinedata = true;
 
 
 	SDL_Window* window;
@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
 
 	
 	std::vector<Vertex> vertices;
-	std::vector<Vertex> vertices2;
+	std::vector<Vertex> vertices_2;
 	vector<vector<Vertex>> vertices_matrix;
 	int num_elements = 0;
 	
@@ -104,6 +104,7 @@ int main(int argc, char** argv) {
 
 	uint64_t numVertices = 0;
 	std::vector<uint32_t> indices;
+	std::vector<uint32_t> indices_2;
 	
 
 
@@ -119,21 +120,30 @@ int main(int argc, char** argv) {
 	else
 	{
 		vertices = readNormls(Filename_aorta,vertices);
-		//vertices2 = vertices;
+		//vertices_2 = vertices;
 		//vertices=read_wss_mag(Filename_aorta, vertices);
-		//vertices2 = read_wss_mag2(Filename_aorta, vertices2);
+		//vertices_2 = read_wss_mag2(Filename_aorta, vertices_2);
 		indices = readIndices_Vertex(Filename_aorta);
 		
 		vertices_matrix = read_all_wss_mag(Filename_aorta, vertices);
+		vertices_2 = readVertices("cube_pathlines.vtk");
+		indices_2 = readIndices_Line("cube_pathlines.vtk");
 		cout << "done with loading" << endl;
 	}
 
 	numIndices = indices.size();
 	numVertices = vertices.size();
+	uint64_t numIndices_2 = indices_2.size();
+	uint64_t numVertices_2= vertices_2.size();
 
 	//cout << "numVerticec: " << numVertices << " numIndices :" << numIndices << endl;
 	IndexBuffer indexBuffer(indices.data(), numIndices, sizeof(indices[0]));
 	VertexBuffer vertexBuffer(vertices.data(), numVertices);
+	
+	
+	IndexBuffer indexBuffer_2(indices_2.data(), numIndices_2, sizeof(indices_2[0]));
+	VertexBuffer vertexBuffer_2(vertices_2.data(), numVertices_2);
+	
 	
 
 	// loading texture
@@ -215,6 +225,7 @@ int main(int argc, char** argv) {
 	float cameraSpeed = 6.0f;
 		
 	glEnable(GL_CULL_FACE); //enables culling(hide not shown triangle)
+	glCullFace(GL_FRONT);
 	glEnable(GL_DEPTH_TEST); // Tiefentest --> vorgrund überdeckt hintergrund
 	
 
@@ -425,12 +436,12 @@ int main(int argc, char** argv) {
 		//texture stuff
 		
 
-		vertexBuffer.bind();
+		
 		glUniformMatrix4fv(modelViewProjMatrixLocation, 1, GL_FALSE, &modelViewProj[0][0]); //übergibt die prjection matrix an den shader
 		glUniformMatrix4fv(modelViewLocation, 1, GL_FALSE, &modelView[0][0]); //übergabe der view matrix an den shader
 		glUniformMatrix4fv(invModelViewLocation, 1, GL_FALSE, &invModelView[0][0]); //übergabe der view matrix an den shader
 
-		indexBuffer.bind();
+		
 		glActiveTexture(GL_TEXTURE0);
 	
 		if (isLinedata)
@@ -439,11 +450,22 @@ int main(int argc, char** argv) {
 		}
 		else
 		{
+			vertexBuffer.bind();
+			indexBuffer.bind();
 			glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_INT, 0);
+			vertexBuffer.unBind();
+			indexBuffer.unBind();
+
+
+			vertexBuffer_2.bind();
+			indexBuffer_2.bind();
+			glDrawElements(GL_LINES, numIndices, GL_UNSIGNED_INT, 0);
+			vertexBuffer_2.unBind();
+			indexBuffer_2.unBind();
 		}
 		
 		
-		vertexBuffer.unBind();
+		
 
 		SDL_GL_SwapWindow(window);
 

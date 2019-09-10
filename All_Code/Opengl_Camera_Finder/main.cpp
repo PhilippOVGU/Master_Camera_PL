@@ -446,7 +446,11 @@ int main(int argc, char** argv) {
 	
 		if (isLinedata)
 		{
+			vertexBuffer.bind();
+			indexBuffer.bind();
 			glDrawElements(GL_LINES, numIndices, GL_UNSIGNED_INT, 0);
+			vertexBuffer.unBind();
+			indexBuffer.unBind();
 		}
 		else
 		{

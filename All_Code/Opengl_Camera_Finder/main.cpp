@@ -50,8 +50,10 @@ int main(int argc, char** argv) {
 	//	isLinedata = false;
 	//}
 	//cout << "islinedata: " << isLinedata << endl;
-	//string Filename_aorta = "Aorta_mesh.vtk";
-	string Filename_aorta = "cube.vtk";
+	string Filename_aorta = "Aorta_mesh.vtk";
+	//string Filename_aorta = "cube.vtk";
+	//string Filename_pathlines = "cube_pathlines.vtk";
+	string Filename_pathlines = "Aorta_pathlines.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
 	//string Filename_aorta = "cube_pathlines.vtk";
 	bool isLinedata = false;
@@ -125,9 +127,9 @@ int main(int argc, char** argv) {
 		//vertices_2 = read_wss_mag2(Filename_aorta, vertices_2);
 		indices = readIndices_Vertex(Filename_aorta);
 		
-		vertices_matrix = read_all_wss_mag(Filename_aorta, vertices);
-		vertices_2 = readVertices("cube_pathlines.vtk");
-		indices_2 = readIndices_Line("cube_pathlines.vtk");
+		//vertices_matrix = read_all_wss_mag(Filename_aorta, vertices);
+		vertices_2 = readVertices(Filename_pathlines);
+		indices_2 = readIndices_Line(Filename_pathlines);
 		cout << "done with loading" << endl;
 	}
 
@@ -394,29 +396,29 @@ int main(int argc, char** argv) {
 
 
 		// Change surface time dependend
-		if (!isLinedata)
-		{
+		//if (!isLinedata)
+		//{
 
 
-			if (surfacecounter < numtimesteps + 1) //numtimesteps+1 because if(time >start_timeframe..) is false at the start (at t=0) and as a result surfacecounter skipps 0
-			{
+		//	if (surfacecounter < numtimesteps + 1) //numtimesteps+1 because if(time >start_timeframe..) is false at the start (at t=0) and as a result surfacecounter skipps 0
+		//	{
 
-				if (time >= (start_timeframe * surfacecounter) && time < ((end_timeframe + maxtime / numtimesteps) * surfacecounter))
-				{
-					if (changdata)
-					{
-						cout << surfacecounter << endl;
-						vertexBuffer.newData(vertices_matrix[surfacecounter - 1].data(), numVertices); // surfacecounter-1 because if(time >start_timeframe..) is false at the start (t=0) and surfacecounter skipps 0
-						changdata = false;
-					}
-				}
-				else
-				{
-					surfacecounter++;
-					changdata = true;
-				}
-			}
-		}
+		//		if (time >= (start_timeframe * surfacecounter) && time < ((end_timeframe + maxtime / numtimesteps) * surfacecounter))
+		//		{
+		//			if (changdata)
+		//			{
+		//				cout << surfacecounter << endl;
+		//				vertexBuffer.newData(vertices_matrix[surfacecounter - 1].data(), numVertices); // surfacecounter-1 because if(time >start_timeframe..) is false at the start (t=0) and surfacecounter skipps 0
+		//				changdata = false;
+		//			}
+		//		}
+		//		else
+		//		{
+		//			surfacecounter++;
+		//			changdata = true;
+		//		}
+		//	}
+		//}
 		
 		
 		

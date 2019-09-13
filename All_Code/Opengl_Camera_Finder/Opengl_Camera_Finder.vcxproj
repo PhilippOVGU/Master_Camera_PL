@@ -156,6 +156,7 @@
     <None Include="Aorta_mesh.vtk" />
     <None Include="Aorta_pathlines.vtk" />
     <None Include="basic_fs.glsl" />
+    <None Include="basic_gs.glsl" />
     <None Include="basic_vs.glsl" />
     <None Include="cube.vtk" />
     <None Include="triangle.vtk" />

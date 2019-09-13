@@ -50,12 +50,12 @@ int main(int argc, char** argv) {
 	//	isLinedata = false;
 	//}
 	//cout << "islinedata: " << isLinedata << endl;
-	//string Filename_aorta = "Aorta_mesh.vtk";
+	string Filename_aorta = "Aorta_mesh.vtk";
 	//string Filename_aorta = "cube.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
-	string Filename_aorta = "cube_pathlines.vtk";
-	//bool isLinedata = false;
-	bool isLinedata = true;
+	//string Filename_aorta = "cube_pathlines.vtk";
+	bool isLinedata = false;
+	//bool isLinedata = true;
 
 
 	SDL_Window* window;

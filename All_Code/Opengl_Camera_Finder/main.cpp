@@ -50,12 +50,12 @@ int main(int argc, char** argv) {
 	//	isLinedata = false;
 	//}
 	//cout << "islinedata: " << isLinedata << endl;
-	string Filename_aorta = "Aorta_mesh.vtk";
+	//string Filename_aorta = "Aorta_mesh.vtk";
 	//string Filename_aorta = "cube.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
-	//string Filename_aorta = "cube_pathlines.vtk";
-	bool isLinedata = false;
-	//bool isLinedata = true;
+	string Filename_aorta = "cube_pathlines.vtk";
+	//bool isLinedata = false;
+	bool isLinedata = true;
 
 
 	SDL_Window* window;
@@ -160,7 +160,7 @@ int main(int argc, char** argv) {
 	}
 
 
-	Shader shader("basic_vs.glsl", "basic_fs.glsl");
+	Shader shader("basic_vs.glsl", "basic_fs.glsl", "basic_gs.glsl");
 	shader.bind();
 
 	
@@ -435,7 +435,7 @@ int main(int argc, char** argv) {
 	
 		if (isLinedata)
 		{
-			glDrawElements(GL_LINES, numIndices, GL_UNSIGNED_INT, 0);
+			glDrawElements(GL_LINE_STRIP_ADJACENCY, numIndices, GL_UNSIGNED_INT, 0);
 		}
 		else
 		{

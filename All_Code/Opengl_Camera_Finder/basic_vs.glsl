@@ -1,4 +1,4 @@
-#version 330 core
+#version 450 core
 
 layout(location=0) in vec3 a_position;
 layout(location=1) in vec2 a_texCoord;
@@ -16,7 +16,7 @@ uniform mat4 u_invModelView; //ignoriert skalierung des bildes --> wenn nicht an
 
 void main(){
 
-gl_Position  = u_modelViewProj * vec4(a_position, 1.0f);
+//gl_Position  = u_modelViewProj * vec4(a_position, 1.0f);
 v_color = a_color;
 //v_color=vec4(normalize(a_position),1.0f);
 //v_color=vec4(a_normal,1.0f);
@@ -25,4 +25,5 @@ v_texCoord=a_texCoord;
 //lighting
 v_normal=mat3(u_invModelView)*a_normal; //mat3 weil keine translation weil das sind vektoren keine punkte
 v_position=vec3(u_modelView*vec4(a_position,1.0f));
+gl_Position=(u_modelView*vec4(a_position,1.0f));
 }

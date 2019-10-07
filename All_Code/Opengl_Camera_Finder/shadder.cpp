@@ -3,8 +3,8 @@
 #include <iostream>
 
 
-Shader::Shader(const char* vertexShaderFilename, const  char* fragmentShaderFilename) {
-	shaderID = createShader(vertexShaderFilename, fragmentShaderFilename);
+Shader::Shader(const char* vertexShaderFilename, const  char* fragmentShaderFilename, const  char* geometryShaderFilename) {
+	shaderID = createShader(vertexShaderFilename, fragmentShaderFilename, geometryShaderFilename);
 };
 Shader:: ~Shader() {
 	glDeleteProgram(shaderID);
@@ -72,16 +72,19 @@ std::string Shader::parse(const char* filename) {
 };
 
 
-GLuint Shader::createShader(const char* vertexShaderFilename, const char* fragmentShaderFilename) {
+GLuint Shader::createShader(const char* vertexShaderFilename, const char* fragmentShaderFilename, const  char* geometryShaderFilename) {
 	std::string vertexShaderSource = parse(vertexShaderFilename);
 	std::string fragmentShaderSource = parse(fragmentShaderFilename);
+	std::string geometryShaderSource = parse(geometryShaderFilename);
 	GLuint program = glCreateProgram();
 	GLuint vs = compile(vertexShaderSource, GL_VERTEX_SHADER);
 	GLuint fs = compile(fragmentShaderSource, GL_FRAGMENT_SHADER);
+	GLuint gs = compile(geometryShaderSource, GL_GEOMETRY_SHADER);
 
 
 	glAttachShader(program, vs);
 	glAttachShader(program, fs);
+	glAttachShader(program, gs);
 	glLinkProgram(program);
 
 	return program;

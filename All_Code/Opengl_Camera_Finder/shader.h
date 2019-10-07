@@ -5,7 +5,7 @@
 
 struct Shader
 {
-	Shader(const char* vertexShaderFilename, const  char* fragmentShaderFilename);
+	Shader(const char* vertexShaderFilename, const  char* fragmentShaderFilename, const  char* geometryShaderFilename);
 	virtual ~Shader();
 	void bind();
 	void unbind();
@@ -16,7 +16,7 @@ struct Shader
 private:
 	GLuint compile(std::string shaderSource,GLenum type);
 	std::string parse(const char* filename);
-	GLuint createShader(const char* vertexShaderFilename, const char* fragmentShaderFilename);
+	GLuint createShader(const char* vertexShaderFilename, const char* fragmentShaderFilename, const  char* geometryShaderFilename);
 
 	GLuint shaderID;
 

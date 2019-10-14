@@ -435,7 +435,8 @@ int main(int argc, char** argv) {
 	
 		if (isLinedata)
 		{
-			glDrawElements(GL_LINE_STRIP_ADJACENCY, numIndices, GL_UNSIGNED_INT, 0);
+			//glDrawElements(GL_LINE_STRIP_ADJACENCY, numIndices, GL_UNSIGNED_INT, 0);
+			glDrawElements(GL_LINES, numIndices, GL_UNSIGNED_INT, 0);
 		}
 		else
 		{

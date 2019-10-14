@@ -1,5 +1,6 @@
 #version 450 core
-layout(lines_adjacency) in;
+layout(lines) in;
+//layout(lines_adjacency) in;
 //layout(triangle_strip, max_vertices = 20) out;
 layout(line_strip, max_vertices = 20) out;
 
@@ -17,26 +18,28 @@ out vec3 v_position;
 
 void main(){
     
+gl_Position = gl_in[0].gl_Position;
 v_color=g_color[0];
 v_texCoord=g_texCoord[0];
 v_normal=g_normal[0]; 
 v_position=g_position[0];
 EmitVertex();
+gl_Position = gl_in[1].gl_Position;
 v_color=g_color[1];
 v_texCoord=g_texCoord[1];
 v_normal=g_normal[1]; 
 v_position=g_position[1];
 EmitVertex();
-v_color=g_color[2];
-v_texCoord=g_texCoord[2];
-v_normal=g_normal[2]; 
-v_position=g_position[2];
-EmitVertex();
-v_color=g_color[3];
-v_texCoord=g_texCoord[3];
-v_normal=g_normal[3]; 
-v_position=g_position[3];
-EmitVertex();
+//v_color=g_color[2];
+//v_texCoord=g_texCoord[2];
+//v_normal=g_normal[2]; 
+//v_position=g_position[2];
+//EmitVertex();
+//v_color=g_color[3];
+//v_texCoord=g_texCoord[3];
+//v_normal=g_normal[3]; 
+//v_position=g_position[3];
+//EmitVertex();
 //v_color=g_color[4];
 //v_texCoord=g_texCoord[4];
 //v_normal=g_normal[4]; 
@@ -51,6 +54,6 @@ EmitVertex();
 //v_texCoord=g_texCoord[6];
 //v_normal=g_normal[6]; 
 //v_position=g_position[6];
-EmitVertex();
+//EmitVertex();
 EndPrimitive();
 }

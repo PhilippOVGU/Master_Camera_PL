@@ -1,6 +1,6 @@
 #version 450 core
-//layout(lines) in;
-layout(lines_adjacency) in;
+layout(lines) in;
+//layout(lines_adjacency) in;
 //layout(triangle_strip, max_vertices = 20) out;
 layout(triangle_strip, max_vertices = 20) out;
 
@@ -49,61 +49,43 @@ void main(){
 //createVertexCopy(2, orth_2, tan_2, -scale * 1);
 //EndPrimitive();
 
-const vec3 linevector1=gl_in[1].gl_Position.xyz-gl_in[0].gl_Position.xyz;
-const vec3 linevector2=gl_in[2].gl_Position.xyz-gl_in[1].gl_Position.xyz;
-const vec3 linevector3=gl_in[3].gl_Position.xyz-gl_in[2].gl_Position.xyz;
- const vec3 cornervector1 = normalize((linevector1 + linevector2)/2.0);
- const vec3 cornervector2 = normalize((linevector2 + linevector3)/2.0);
+const vec3 linevector=gl_in[1].gl_Position.xyz-gl_in[0].gl_Position.xyz;
 //const vec3 viewvector=vec3(1,1,1);
 //const vec3 viewvector=vec3(-g_position[0]);
-const vec3 viewvector1=vec3(-g_position[1]);
-const vec3 viewvector2=vec3(-g_position[2]);
-//const vec3 orthogonal=normalize(cross(viewvector1,linevector1));
-const vec3 orthogonal1=normalize(cross(viewvector1,cornervector1));
-const vec3 orthogonal2=normalize(cross(viewvector2,cornervector2));
-
-
-
-
-
-
-gl_Position = vec4((gl_in[1].gl_Position + vec4(orthogonal1,0)*lineWidth).xy,gl_in[1].gl_Position.zw);
+const vec3 viewvector=vec3((-g_position[0]-g_position[1])/2.0);
+const vec3 orthogonal=normalize(cross(viewvector,linevector));
+gl_Position = vec4((gl_in[0].gl_Position + vec4(orthogonal,0)*lineWidth).xy,gl_in[0].gl_Position.zw);
 //gl_Position = gl_in[0].gl_Position;
+v_color=g_color[0];
+v_texCoord=g_texCoord[0];
+//v_normal=g_normal[0]; 
+v_normal=normalize(cross(linevector, gl_Position.xyz));
+v_position=g_position[0];
+EmitVertex();
+gl_Position = vec4((gl_in[0].gl_Position - vec4(orthogonal,0)*lineWidth).xy,gl_in[0].gl_Position.zw);
+v_color=g_color[0];
+v_texCoord=g_texCoord[0];
+//v_normal=g_normal[0]; 
+v_normal=normalize(cross(linevector, gl_Position.xyz));
+v_position=g_position[0];
+EmitVertex();
+gl_Position = vec4((gl_in[1].gl_Position + vec4(orthogonal,0)*lineWidth).xy,gl_in[1].gl_Position.zw);
 v_color=g_color[1];
 v_texCoord=g_texCoord[1];
-//v_normal=g_normal[0]; 
-v_normal=normalize(cross(cornervector1, gl_Position.xyz));
+//v_normal=g_normal[1]; 
+v_normal=normalize(cross(linevector, gl_Position.xyz));
 v_position=g_position[1];
 EmitVertex();
-
-gl_Position = vec4((gl_in[1].gl_Position - vec4(orthogonal1,0)*lineWidth).xy,gl_in[1].gl_Position.zw);
+gl_Position = vec4((gl_in[1].gl_Position - vec4(orthogonal,0)*lineWidth).xy,gl_in[1].gl_Position.zw);
 v_color=g_color[1];
 v_texCoord=g_texCoord[1];
-//v_normal=g_normal[0]; 
-v_normal=normalize(cross(cornervector1, gl_Position.xyz));
+//v_normal=g_normal[1]; 
+v_normal=normalize(cross(linevector, gl_Position.xyz));
 v_position=g_position[1];
 EmitVertex();
-gl_Position = vec4((gl_in[2].gl_Position + vec4(orthogonal2,0)*lineWidth).xy,gl_in[2].gl_Position.zw);
-v_color=g_color[2];
-v_texCoord=g_texCoord[2];
-//v_normal=g_normal[1]; 
-v_normal=normalize(cross(cornervector2, gl_Position.xyz));
-v_position=g_position[2];
-EmitVertex();
-gl_Position = vec4((gl_in[2].gl_Position - vec4(orthogonal2,0)*lineWidth).xy,gl_in[2].gl_Position.zw);
-v_color=g_color[2];
-v_texCoord=g_texCoord[2];
-//v_normal=g_normal[1]; 
-v_normal=normalize(cross(cornervector2, gl_Position.xyz));
-v_position=g_position[2];
-EmitVertex();
-
 EndPrimitive();
-
-
 
 
 
 //EndPrimitive();
 }
-

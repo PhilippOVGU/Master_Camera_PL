@@ -90,8 +90,9 @@ int main(int argc, char** argv) {
 	glEnable(GL_DEBUG_OUTPUT);
 	glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 	glDebugMessageCallback(opengelDebugCallback, 0);
-
-
+	//activate line interrupt by with gl_primitive restart:
+	glEnable(GL_PRIMITIVE_RESTART);
+	glPrimitiveRestartIndex(INT_MAX);
 	
 
 	
@@ -435,8 +436,8 @@ int main(int argc, char** argv) {
 	
 		if (isLinedata)
 		{
-			//glDrawElements(GL_LINE_STRIP_ADJACENCY, numIndices, GL_UNSIGNED_INT, 0);
-			glDrawElements(GL_LINES, numIndices, GL_UNSIGNED_INT, 0);
+			glDrawElements(GL_LINE_STRIP_ADJACENCY, numIndices, GL_UNSIGNED_INT, 0);
+			//glDrawElements(GL_LINES, numIndices, GL_UNSIGNED_INT, 0);
 		}
 		else
 		{

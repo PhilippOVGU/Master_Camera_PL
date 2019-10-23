@@ -300,20 +300,24 @@ vector<uint32_t> readIndices_Line(string Filename) {
 				if (i == 0)
 				{
 					indices.push_back(stoi(line_str, &sz));
+					indices.push_back(stoi(line_str, &sz));
 				}
 				else if (i == (lineLength - 1))
 				{
 					indices.push_back(stoi(line_str, &sz));
+					indices.push_back(stoi(line_str, &sz));
+					indices.push_back(stoi(line_str, &sz)); //for some reasone i need 3 for lines_adjacancy instead of 2 
+					
 				}
 				else
 				{
 					indices.push_back(stoi(line_str, &sz));
-					indices.push_back(stoi(line_str, &sz));
+					//indices.push_back(stoi(line_str, &sz));
 				}
 
 			}
 
-			//indices.push_back(stoi(line_str, &sz));
+			indices.push_back(INT_MAX);
 
 		}
 		

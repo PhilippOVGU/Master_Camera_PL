@@ -52,8 +52,8 @@ int main(int argc, char** argv) {
 	//cout << "islinedata: " << isLinedata << endl;
 	//string Filename_aorta = "Aorta_mesh.vtk";
 	//string Filename_aorta = "cube.vtk";
-	//string Filename_aorta = "Aorta_pathlines.vtk";
-	string Filename_aorta = "cube_pathlines.vtk";
+	string Filename_aorta = "Aorta_pathlines.vtk";
+	//string Filename_aorta = "cube_pathlines.vtk";
 	//bool isLinedata = false;
 	bool isLinedata = true;
 
@@ -105,6 +105,7 @@ int main(int argc, char** argv) {
 
 	uint64_t numVertices = 0;
 	std::vector<uint32_t> indices;
+	std::vector<double> time_linedata;
 	
 
 
@@ -113,9 +114,13 @@ int main(int argc, char** argv) {
 	// loading aorta
 	cout << "Loading in data....(this may take a few seconds)" << endl;
 	vertices = readVertices(Filename_aorta);
+	int linetimesteps = 20;
 	if (isLinedata)
 	{
+		
 		indices = readIndices_Line(Filename_aorta);
+		time_linedata =readTime(Filename_aorta);
+		vertices_matrix = create_time_line(time_linedata, vertices, linetimesteps);
 	}
 	else
 	{
@@ -221,7 +226,7 @@ int main(int argc, char** argv) {
 
 
 	// varables and calculations for changing surface depended on time
-	int maxtime = 40; //länge der annimation
+	int maxtime = 20; //länge der annimation
 	int surfacecounter = 0;
 	int start_timeframe = 0;
 	int end_timeframe = 0;
@@ -337,7 +342,7 @@ int main(int argc, char** argv) {
 		}
 
 
-
+		
 
 
 
@@ -408,6 +413,30 @@ int main(int argc, char** argv) {
 			}
 		}
 		
+		//changeing line appeariance dependent on time
+		if (isLinedata)
+		{
+
+
+			if (surfacecounter < linetimesteps + 1) //numtimesteps+1 because if(time >start_timeframe..) is false at the start (at t=0) and as a result surfacecounter skipps 0
+			{
+
+				if (time >= (start_timeframe * surfacecounter) && time < ((end_timeframe + maxtime / linetimesteps) * surfacecounter))
+				{
+					if (changdata)
+					{
+						cout << surfacecounter << endl;
+						vertexBuffer.newData(vertices_matrix[surfacecounter - 1].data(), numVertices); // surfacecounter-1 because if(time >start_timeframe..) is false at the start (t=0) and surfacecounter skipps 0
+						changdata = false;
+					}
+				}
+				else
+				{
+					surfacecounter++;
+					changdata = true;
+				}
+			}
+		}
 		
 		
 		

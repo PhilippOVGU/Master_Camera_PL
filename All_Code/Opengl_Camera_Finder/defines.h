@@ -24,5 +24,6 @@ struct Vertex
 	float ny;
 	float nz;
 
+
 	
 };

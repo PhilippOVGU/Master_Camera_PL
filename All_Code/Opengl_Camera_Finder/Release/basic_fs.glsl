@@ -26,8 +26,8 @@ void main()
 	vec3 refleccolor=vec3(1.0f,1.0f,1.0f);
 	vec3 reflection=reflect(-light,normal); // berechnet reflektion (einfallsswikeln=ausfallwinkels)
 	vec3 ambient=color*0.2;
-	vec3 deffuse=max(dot(normal,light),0.0)*color; //projection der beiden afeinander --> max sorg dafür das es nicht unter 0 geht
-	vec3 specular=pow(max(dot(reflection,view),0.0),4.0)*refleccolor; // specular reflektionen
+	vec3 deffuse=(max(dot(normal,light),0.0)*color); //projection der beiden afeinander --> max sorg dafür das es nicht unter 0 geht
+	vec3 specular=(pow(max(dot(reflection,view),0.0),4.0)*refleccolor); // specular reflektionen
 	f_color=vec4(ambient+deffuse+0.5*specular,1.0f); // combination der einezlen effekte
 	//f_color=vec4(ambient,1.0f); // combination der einezlen effekte
 }

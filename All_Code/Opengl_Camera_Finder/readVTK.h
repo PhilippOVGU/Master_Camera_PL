@@ -265,6 +265,87 @@ vector<Vertex> readNormls(string Filename,vector<Vertex> vertices) {
 	return vertices;
 }
 
+vector<vector<Vertex>> create_time_line(vector<double> time_linedata, vector<Vertex> vertices,int numtimesteps) {
+	vector < vector<Vertex>> vertices_matrix;
+	//find max
+	double max = 0;
+	vector<Vertex> vertices_copy;
+	for (size_t i = 0; i < time_linedata.size(); i++)
+	{
+		if (max<time_linedata[i])
+		{
+			max = time_linedata[i];
+		}
+	}
+	cout << "maximum: " << max << endl;
+	double timestep = max / numtimesteps;
+
+	for (int i = 0; i < numtimesteps; i++)
+	{
+		vertices_copy = vertices;
+		for (int j = 0; j < vertices.size(); j++)
+		{
+			if (time_linedata[j]<(0+i*timestep) || time_linedata[j]>(timestep+i*timestep)){
+
+				vertices_copy[j].r = 0;
+				vertices_copy[j].g = 0;
+				vertices_copy[j].b = 0;
+				vertices_copy[j].a = 0;
+			}
+		}
+		vertices_matrix.push_back(vertices_copy);
+
+	}
+	cout << "maximum: " << max << endl;
+	return vertices_matrix;
+
+}
+vector<double> readTime(string Filename) {
+	vector<double> time;
+	ifstream time_str;
+
+
+	time_str.open(Filename);
+	string line_str;
+	string::size_type sz;
+	int zahler = 0;
+	int StartIndexSection = 0; //0=false 1= übergangszustand 2=true
+	bool EndIndexSection = false;
+
+	while (!time_str.eof())
+	{
+
+		time_str >> line_str;
+
+		if (line_str == "SCALARS" && StartIndexSection == 2)
+		{
+			EndIndexSection = true;
+		}
+
+		
+
+		if (StartIndexSection == 2 && !EndIndexSection)// All conditions med --> here starts actuall reading of section with line information
+		{
+			time.push_back(atof(line_str.c_str()));
+		}
+
+		if (line_str == "time")
+		{
+			StartIndexSection = 1;
+			zahler = 0;
+		}
+		else if (StartIndexSection == 1 && zahler == 4)
+		{
+			StartIndexSection = 2;
+		}
+		zahler++;
+		//cout << line_str << "  zahler: " << zahler << endl;
+	}
+
+	//int test2 = 5;
+	time_str.close();
+	return time;
+}
 vector<uint32_t> readIndices_Line(string Filename) {
 	vector<uint32_t> indices;
 	ifstream Indices_str;

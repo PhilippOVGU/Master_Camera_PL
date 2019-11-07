@@ -150,6 +150,7 @@
     <ClInclude Include="readVTK.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="utility.h" />
     <ClInclude Include="Vertex_buffer2.h" />
   </ItemGroup>
   <ItemGroup>

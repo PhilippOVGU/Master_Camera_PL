@@ -53,6 +53,9 @@
     <ClInclude Include="Vertex_buffer2.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="utility.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Aorta_mesh.vtk">

@@ -23,6 +23,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include <fstream>
 #include "readVTK.h"
+#include "utility.h"
 
 using namespace std;
 
@@ -114,20 +115,25 @@ int main(int argc, char** argv) {
 	// loading aorta
 	cout << "Loading in data....(this may take a few seconds)" << endl;
 	vertices = readVertices(Filename_aorta);
-	int linetimesteps = 20;
+	int linetimesteps = 120;
+	int maximumtime = 30;
+	vector<double> upLimit = upperBound(linetimesteps, maximumtime);
+	vector<double> lowLimit = lowerBound(linetimesteps, maximumtime);
+	vector<Vertex> swapVertices;
 	if (isLinedata)
 	{
 		
+		
 		indices = readIndices_Line(Filename_aorta);
 		time_linedata =readTime(Filename_aorta);
-		vertices_matrix = create_time_line(time_linedata, vertices, linetimesteps);
+
+		double maxlineTime = findMax(time_linedata);
+
 	}
 	else
 	{
 		vertices = readNormls(Filename_aorta,vertices);
-		//vertices2 = vertices;
-		//vertices=read_wss_mag(Filename_aorta, vertices);
-		//vertices2 = read_wss_mag2(Filename_aorta, vertices2);
+
 		indices = readIndices_Vertex(Filename_aorta);
 		
 		vertices_matrix = read_all_wss_mag(Filename_aorta, vertices);
@@ -226,12 +232,21 @@ int main(int argc, char** argv) {
 
 
 	// varables and calculations for changing surface depended on time
-	int maxtime = 20; //länge der annimation
+	int maxtime = 30; //länge der annimation
 	int surfacecounter = 0;
 	int start_timeframe = 0;
 	int end_timeframe = 0;
+	int linetimecounter = 0;
 	bool changdata = true;
 	int numtimesteps = count_timesteps(Filename_aorta);
+
+	for (size_t i = 0; i < linetimesteps; i++)
+	{
+
+	}
+	double linetimemaximum = findMax(time_linedata);
+	vector<double> linetimelowerlimit = lowerBound(linetimesteps, linetimemaximum);
+	vector<double> linetimeuperlimit = upperBound(linetimesteps, linetimemaximum);
 	while (true) {
 		
 		
@@ -416,27 +431,29 @@ int main(int argc, char** argv) {
 		//changeing line appeariance dependent on time
 		if (isLinedata)
 		{
-
-
-			if (surfacecounter < linetimesteps + 1) //numtimesteps+1 because if(time >start_timeframe..) is false at the start (at t=0) and as a result surfacecounter skipps 0
+			if (time >=lowLimit[linetimecounter] && time <= upLimit[linetimecounter])
 			{
-
-				if (time >= (start_timeframe * surfacecounter) && time < ((end_timeframe + maxtime / linetimesteps) * surfacecounter))
+				if (linetimecounter>= linetimesteps)
 				{
-					if (changdata)
-					{
-						cout << surfacecounter << endl;
-						vertexBuffer.newData(vertices_matrix[surfacecounter - 1].data(), numVertices); // surfacecounter-1 because if(time >start_timeframe..) is false at the start (t=0) and surfacecounter skipps 0
-						changdata = false;
-					}
+					changdata = false;
 				}
-				else
-				{
-					surfacecounter++;
-					changdata = true;
-				}
+				if (changdata)
+								{
+									cout << linetimecounter << endl;
+									swapVertices = swapVertex(linetimelowerlimit[linetimecounter], linetimeuperlimit[linetimecounter], time_linedata, vertices);
+									//vertexBuffer.newData(vertices_matrix[linetimecounter].data(), numVertices); // surfacecounter-1 because if(time >start_timeframe..) is false at the start (t=0) and surfacecounter skipps 0
+									vertexBuffer.newData(swapVertices.data(), numVertices); // surfacecounter-1 because if(time >start_timeframe..) is false at the start (t=0) and surfacecounter skipps 0
+									changdata = false;
+									linetimecounter++;
+								}
+			}
+			else
+			{
+				changdata = true;
 			}
 		}
+		
+
 		
 		
 		
@@ -465,6 +482,7 @@ int main(int argc, char** argv) {
 	
 		if (isLinedata)
 		{
+			
 			glDrawElements(GL_LINE_STRIP_ADJACENCY, numIndices, GL_UNSIGNED_INT, 0);
 			//glDrawElements(GL_LINES, numIndices, GL_UNSIGNED_INT, 0);
 		}

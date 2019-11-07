@@ -265,6 +265,7 @@ vector<Vertex> readNormls(string Filename,vector<Vertex> vertices) {
 	return vertices;
 }
 
+
 vector<vector<Vertex>> create_time_line(vector<double> time_linedata, vector<Vertex> vertices,int numtimesteps) {
 	vector < vector<Vertex>> vertices_matrix;
 	//find max
@@ -287,9 +288,9 @@ vector<vector<Vertex>> create_time_line(vector<double> time_linedata, vector<Ver
 		{
 			if (time_linedata[j]<(0+i*timestep) || time_linedata[j]>(timestep+i*timestep)){
 
-				vertices_copy[j].r = 0;
-				vertices_copy[j].g = 0;
-				vertices_copy[j].b = 0;
+				//vertices_copy[j].r = 0;
+				//vertices_copy[j].g = 0;
+				//vertices_copy[j].b = 0;
 				vertices_copy[j].a = 0;
 			}
 		}

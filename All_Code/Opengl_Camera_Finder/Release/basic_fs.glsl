@@ -15,8 +15,10 @@ void main()
 	vec4 texColor=texture(u_texture,v_texCoord);
 	//f_color=u_color;
 	//f_color=v_color;
-
 	
+	if(v_color.w==0){
+	discard;
+	}
 	//lighting
 	vec3 view=normalize(-v_position); //kamera immer bei (0,0,0)
 	vec3 light=normalize(-v_position); //kamera immer bei (0,0,0) --> this is for "headlight" (light comes from the camera=no shadows) comment this for arbertryy light position
@@ -24,7 +26,7 @@ void main()
 	vec3 normal=normalize(v_normal); // normalizserung kann verloren gehen durch interpolation für fragments zwischen vertices
 	//vec3 color=vec3(1.0f,0.0f,0.0f); //grundfarbe des objects
 	vec3 color=vec3(v_color); //grundfarbe des objects --> tranfered from vertex class in r,g,b (inital defenition in read vertedx VTK to white)
-	vec3 refleccolor=vec3(1.0f,1.0f,1.0f)*v_color.w; // v_color.w --> is our light sitch to turn on or of refliection lighting for line animation
+	vec3 refleccolor=vec3(1.0f,1.0f,1.0f); // v_color.w --> is our light sitch to turn on or of refliection lighting for line animation
 	vec3 reflection=reflect(-light,normal); // berechnet reflektion (einfallsswikeln=ausfallwinkels)
 	vec3 ambient=color*0.2;
 	vec3 deffuse=(max(dot(normal,light),0.0)*color); //projection der beiden afeinander --> max sorg dafür das es nicht unter 0 geht

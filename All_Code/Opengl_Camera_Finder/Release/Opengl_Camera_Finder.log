@@ -11,23 +11,50 @@ C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\
 C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(567,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(568,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(569,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(24,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(37,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(150,42): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(151,45): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(185,33): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(192,35): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(246,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(369,34): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(422,72): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(448,52): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(511,44): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(516,33): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(28,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(41,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(111,45): warning C4244:  'argument': conversion from '_Ty' to '_Ty', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(111,45): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(111,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(111,45): warning C4244:             _Ty=double
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(111,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(111,45): warning C4244:         and
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(111,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(111,45): warning C4244:             _Ty=float
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(111,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(112,45): warning C4244:  'argument': conversion from '_Ty' to '_Ty', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(112,45): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(112,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(112,45): warning C4244:             _Ty=double
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(112,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(112,45): warning C4244:         and
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(112,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(112,45): warning C4244:             _Ty=float
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(112,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:  'argument': conversion from '_Ty' to '_Ty', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:             _Ty=double
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         and
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:             _Ty=float
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(154,42): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(155,45): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(199,33): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(206,35): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(265,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(408,34): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(475,72): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(501,52): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(542,44): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(547,33): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Generating code
-  3 of 709 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  1 of 5857 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    9 functions had inline decision re-evaluated but remain unchanged
+    39 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
 LINK : warning LNK4286: symbol '___glewLinkProgram' defined in 'glew32s.lib(glew.obj)' is imported by 'shadder.obj'
 LINK : warning LNK4286: symbol '___glewShaderSource' defined in 'glew32s.lib(glew.obj)' is imported by 'shadder.obj'

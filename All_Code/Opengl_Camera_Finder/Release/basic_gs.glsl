@@ -16,7 +16,7 @@ out vec2 v_texCoord;
 out vec3 v_normal; 
 out vec3 v_position;
 
-uniform float lineWidth = 0.2;
+uniform float lineWidth = 0.002;
 
 void createVertexCopy(uint source, vec3 translateDirection, vec3 tangentDirection, float translateScale) {
     if (translateScale == 0) return;

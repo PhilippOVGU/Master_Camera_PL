@@ -24,6 +24,9 @@
 #include <fstream>
 #include "readVTK.h"
 #include "utility.h"
+#include <Eigen/Dense>
+
+
 
 using namespace std;
 
@@ -53,10 +56,13 @@ int main(int argc, char** argv) {
 	//cout << "islinedata: " << isLinedata << endl;
 	//string Filename_aorta = "Aorta_mesh.vtk";
 	//string Filename_aorta = "cube.vtk";
-	string Filename_aorta = "Aorta_pathlines.vtk";
-	//string Filename_aorta = "cube_pathlines.vtk";
+	//string Filename_aorta = "Aorta_pathlines.vtk";
+	string Filename_aorta = "cube_pathlines.vtk";
+	//string Filename_aorta = "flat_pathlines.vtk";
 	//bool isLinedata = false;
 	bool isLinedata = true;
+
+	
 
 
 	SDL_Window* window;
@@ -78,7 +84,7 @@ int main(int argc, char** argv) {
 
 	window = SDL_CreateWindow("Opengl_Aorta", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
 	SDL_GLContext glContext = SDL_GL_CreateContext(window);
-
+	//glViewport(0, 0, 600, 800);
 	GLenum err = glewInit(); // initaliziere glew für neue open gl funktionen
 	if (err != GLEW_OK)
 	{
@@ -115,7 +121,7 @@ int main(int argc, char** argv) {
 	// loading aorta
 	cout << "Loading in data....(this may take a few seconds)" << endl;
 	vertices = readVertices(Filename_aorta);
-	int linetimesteps = 120;
+	int linetimesteps = 1;
 	int maximumtime = 30;
 	vector<double> upLimit = upperBound(linetimesteps, maximumtime);
 	vector<double> lowLimit = lowerBound(linetimesteps, maximumtime);
@@ -139,6 +145,7 @@ int main(int argc, char** argv) {
 		vertices_matrix = read_all_wss_mag(Filename_aorta, vertices);
 		cout << "done with loading" << endl;
 	}
+	
 
 	numIndices = indices.size();
 	numVertices = vertices.size();
@@ -172,10 +179,20 @@ int main(int argc, char** argv) {
 	}
 
 
-	Shader shader("basic_vs.glsl", "basic_fs.glsl", "basic_gs.glsl");
-	shader.bind();
-
 	
+	bool test = false;
+	if (test)
+	{
+		Shader shader("basic_vs.glsl", "basic_fs.glsl", "basic_gs.glsl");
+		shader.bind();
+	}
+	else
+	{
+		Shader shader("mesh_vs.glsl", "mesh_vs.glsl");
+		shader.bind();
+	}
+	
+	Shader shader("basic_vs.glsl", "basic_fs.glsl", "bfat_gs.glsl");
 	
 	// dynamische veränderung der farbe
 	int colorUniformLocation = glGetUniformLocation(shader.getShaderId(), "u_color");
@@ -224,6 +241,8 @@ int main(int argc, char** argv) {
 	bool buttonD = false;
 	bool buttonQ = false;
 	bool buttonE = false;
+	bool buttonY = false;
+	bool buttonX = false;
 	float cameraSpeed = 6.0f;
 		
 	glEnable(GL_CULL_FACE); //enables culling(hide not shown triangle)
@@ -239,6 +258,9 @@ int main(int argc, char** argv) {
 	int linetimecounter = 0;
 	bool changdata = true;
 	int numtimesteps = count_timesteps(Filename_aorta);
+
+	vector<float> PCAView =PCA(vertices);
+	bool PCAstart = true;
 
 	for (size_t i = 0; i < linetimesteps; i++)
 	{
@@ -297,6 +319,12 @@ int main(int argc, char** argv) {
 					case SDLK_e:
 						buttonE = true;
 						break;
+					case SDLK_y:
+						buttonY = true;
+						break;
+					case SDLK_x:
+						buttonX = true;
+						break;
 					case SDLK_ESCAPE:
 						SDL_SetRelativeMouseMode(SDL_FALSE);
 						break;
@@ -329,10 +357,18 @@ int main(int argc, char** argv) {
 				case SDLK_e:
 					buttonE = false;
 					break;
+				case SDLK_y:
+					buttonY = false;
+					break;
+				case SDLK_x:
+					buttonX = false;
+					break;
 				default:
 					break;
 					}
 			}
+
+			
 			// mouse camera movment
 			/*else if (event.type==SDL_MOUSEMOTION)
 			{
@@ -355,10 +391,16 @@ int main(int argc, char** argv) {
 		{
 			break;
 		}
+		// PCA Based start rotation
+		/*if (PCAstart)
+		{
+			model = glm::rotate(model, 1.45f, glm::vec3(PCAView[0], PCAView[1], PCAView[2]));
+			camera.update();
+			PCAstart = false;
 
-
+		}*/
 		
-
+		
 
 
 		// eigntliche änderung der farbe dynamisch
@@ -400,7 +442,21 @@ int main(int argc, char** argv) {
 			//camera.moveSidways(delta* cameraSpeed); 
 			camera.update();
 		}
-
+		if (buttonX)
+		{
+			//model = glm::rotate(model, 0.5f * delta, glm::vec3(0, 0.5f, 0.5f));
+			//model = glm::rotate(model, 0.5f * delta, glm::vec3(PCAView[0], PCAView[1], PCAView[2]));
+			
+			//camera.moveSidways(delta* cameraSpeed); 
+			camera.update();
+		}
+		if (buttonY)
+		{
+			model = glm::rotate(model, 0.5f * delta, glm::vec3(0, -0.5f, -0.5f));
+			//camera.moveSidways(delta* cameraSpeed); 
+			camera.update();
+		}
+		
 
 
 		// Change surface time dependend
@@ -482,7 +538,7 @@ int main(int argc, char** argv) {
 	
 		if (isLinedata)
 		{
-			
+			//glViewport(0, 0, 600, 800);
 			glDrawElements(GL_LINE_STRIP_ADJACENCY, numIndices, GL_UNSIGNED_INT, 0);
 			//glDrawElements(GL_LINES, numIndices, GL_UNSIGNED_INT, 0);
 		}

@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="meshShader.cpp" />
     <ClCompile Include="shadder.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="defines.h" />
     <ClInclude Include="fps_cemera.h" />
     <ClInclude Include="index_buffer.h" />
+    <ClInclude Include="meshShader.h" />
     <ClInclude Include="readVTK.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="stb_image.h" />
@@ -165,6 +167,8 @@
     <None Include="basic_vs.glsl" />
     <None Include="bfat_gs.glsl" />
     <None Include="cube.vtk" />
+    <None Include="mesh_fs.glsl" />
+    <None Include="mesh_vs.glsl" />
     <None Include="triangle.vtk" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

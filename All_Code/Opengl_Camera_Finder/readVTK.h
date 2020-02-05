@@ -78,6 +78,7 @@ vector<vector<Vertex>> read_all_wss_mag(string Filename, vector<Vertex> vertices
 			vertices[vertexcounter].r = (startColor[0] * (1 - percentage)) + (endColor[0] * percentage);
 			vertices[vertexcounter].g = (startColor[1] * (1 - percentage)) + (endColor[1] * percentage);
 			vertices[vertexcounter].b = (startColor[2] * (1 - percentage)) + (endColor[2] * percentage);
+			vertices[vertexcounter].data = stof(line_str, &sz);
 			vertexcounter++;
 			if (vertexcounter==vertices.size())
 			{	// variable reset between vertices

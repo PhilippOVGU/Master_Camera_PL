@@ -11,6 +11,7 @@
 //#include "Vertex_buffer.h"
 #include "Vertex_buffer2.h"
 #include "shader.h"
+#include "meshShader.h"
 #include "index_buffer.h"
 #include <cmath>
 #include <vector>
@@ -55,12 +56,12 @@ int main(int argc, char** argv) {
 	//}
 	//cout << "islinedata: " << isLinedata << endl;
 	//string Filename_aorta = "Aorta_mesh.vtk";
-	//string Filename_aorta = "cube.vtk";
+	string Filename_aorta = "cube.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
-	string Filename_aorta = "cube_pathlines.vtk";
+	//string Filename_aorta = "cube_pathlines.vtk";
 	//string Filename_aorta = "flat_pathlines.vtk";
-	//bool isLinedata = false;
-	bool isLinedata = true;
+	bool isLinedata = false;
+	//bool isLinedata = true;
 
 	
 
@@ -121,7 +122,7 @@ int main(int argc, char** argv) {
 	// loading aorta
 	cout << "Loading in data....(this may take a few seconds)" << endl;
 	vertices = readVertices(Filename_aorta);
-	int linetimesteps = 1;
+	int linetimesteps = 30;
 	int maximumtime = 30;
 	vector<double> upLimit = upperBound(linetimesteps, maximumtime);
 	vector<double> lowLimit = lowerBound(linetimesteps, maximumtime);
@@ -145,7 +146,7 @@ int main(int argc, char** argv) {
 		vertices_matrix = read_all_wss_mag(Filename_aorta, vertices);
 		cout << "done with loading" << endl;
 	}
-	
+	int testkmean=kmeans(vertices_matrix);
 
 	numIndices = indices.size();
 	numVertices = vertices.size();
@@ -179,21 +180,23 @@ int main(int argc, char** argv) {
 	}
 
 
-	
-	bool test = false;
-	if (test)
+	meshShader shader("mesh_vs.glsl", "mesh_fs.glsl");
+	bool test = true;
+	if (isLinedata)
 	{
 		Shader shader("basic_vs.glsl", "basic_fs.glsl", "basic_gs.glsl");
 		shader.bind();
 	}
 	else
 	{
-		Shader shader("mesh_vs.glsl", "mesh_vs.glsl");
+		meshShader shader("mesh_vs.glsl", "mesh_fs.glsl");
+		
 		shader.bind();
 	}
 	
-	Shader shader("basic_vs.glsl", "basic_fs.glsl", "bfat_gs.glsl");
-	
+	//meshShader shader("mesh_vs.glsl", "mesh_fs.glsl");
+	//Shader shader("basic_vs.glsl", "basic_fs.glsl", "basic_gs.glsl");
+	//shader.bind();
 	// dynamische veränderung der farbe
 	int colorUniformLocation = glGetUniformLocation(shader.getShaderId(), "u_color");
 	if (!colorUniformLocation != -1) {
@@ -251,7 +254,7 @@ int main(int argc, char** argv) {
 
 
 	// varables and calculations for changing surface depended on time
-	int maxtime = 30; //länge der annimation
+	int maxtime = 90; //länge der annimation
 	int surfacecounter = 0;
 	int start_timeframe = 0;
 	int end_timeframe = 0;
@@ -531,7 +534,11 @@ int main(int argc, char** argv) {
 		vertexBuffer.bind();
 		glUniformMatrix4fv(modelViewProjMatrixLocation, 1, GL_FALSE, &modelViewProj[0][0]); //übergibt die prjection matrix an den shader
 		glUniformMatrix4fv(modelViewLocation, 1, GL_FALSE, &modelView[0][0]); //übergabe der view matrix an den shader
-		glUniformMatrix4fv(invModelViewLocation, 1, GL_FALSE, &invModelView[0][0]); //übergabe der view matrix an den shader
+		if (!isLinedata) {
+			glUniformMatrix4fv(invModelViewLocation, 1, GL_FALSE, &invModelView[0][0]); //übergabe der view matrix an den shader
+		}
+		
+		
 
 		indexBuffer.bind();
 		glActiveTexture(GL_TEXTURE0);

@@ -6,6 +6,7 @@
 Shader::Shader(const char* vertexShaderFilename, const  char* fragmentShaderFilename, const  char* geometryShaderFilename) {
 	shaderID = createShader(vertexShaderFilename, fragmentShaderFilename, geometryShaderFilename);
 };
+
 Shader:: ~Shader() {
 	glDeleteProgram(shaderID);
 };

@@ -43,8 +43,20 @@ vector<vector<Vertex>> read_all_wss_mag(string Filename, vector<Vertex> vertices
 	int vertexcounter = 0;
 	string wss_mag_t;
 	int counter_timesteps = 0;
-	float startColor[3] = {0.9411,0.231,0.1254 };
-	float endColor[3] = { 1,0.9294,0.62745 };
+	//float startColor[3] = {0.9411,0.231,0.1254 };
+	//float endColor[3] = { 1,0.9294,0.62745 };	
+	float endColor[3] = { 0.9411,0.231,0.1254 };
+	float startColor[3] = { 1,0.9294,0.62745 };
+
+
+	// https://colorbrewer2.org/#type=sequential&scheme=Blues&n=5
+	float Color0[3] = { 0.936 ,0.949,0.996};
+	float Color1[3] = { 0.738,0.84,0.9 };
+	float Color2[3] = { 0.418,0.68,0.836};
+	float Color3[3] = { 0.191,0.508,0.738 };
+	float Color4[3] = { 0.03,0.316,0.609 };
+	cout << "Color 0 calculation: "<< Color0[0] << endl;
+
 	float percentage;
 	
 	
@@ -70,11 +82,42 @@ vector<vector<Vertex>> read_all_wss_mag(string Filename, vector<Vertex> vertices
 		}
 		if (start_wss_meg_section == 2 && !end_wss_meg_section)
 		{
-			//cout << "bin in lese bedingung!" << endl;
-			//vertices[vertexcounter].r = -10 * stof(line_str, &sz) + 5;
-			//vertices[vertexcounter].g = 0;
-			//vertices[vertexcounter].b = 6 * stof(line_str, &sz);
-			percentage = stof(line_str, &sz)/0.4f;
+			percentage = stof(line_str, &sz) / 0.4f;
+			//discrete color scale
+			//if (percentage<0.2)
+			//{
+			//	vertices[vertexcounter].r = Color0[0];
+			//	vertices[vertexcounter].g = Color0[1];
+			//	vertices[vertexcounter].b = Color0[2];
+
+			//}
+			//if (percentage>0.2&&percentage<0.4)
+			//{
+			//	vertices[vertexcounter].r = Color1[0];
+			//	vertices[vertexcounter].g = Color1[1];
+			//	vertices[vertexcounter].b = Color1[2];
+			//}
+			//if (percentage > 0.4 && percentage < 0.6)
+			//{
+			//	vertices[vertexcounter].r = Color2[0];
+			//	vertices[vertexcounter].g = Color2[1];
+			//	vertices[vertexcounter].b = Color2[2];
+			//}
+			//if (percentage>0.6&&percentage<0.8)
+			//{
+			//	vertices[vertexcounter].r = Color3[0];
+			//	vertices[vertexcounter].g = Color3[1];
+			//	vertices[vertexcounter].b = Color3[2];
+			//}
+			//if (percentage>0.8)
+			//{
+			//	vertices[vertexcounter].r = Color4[0];
+			//	vertices[vertexcounter].g = Color4[1];
+			//	vertices[vertexcounter].b = Color4[2];
+			//}
+
+			//continuierliche farbscala
+			
 			vertices[vertexcounter].r = (startColor[0] * (1 - percentage)) + (endColor[0] * percentage);
 			vertices[vertexcounter].g = (startColor[1] * (1 - percentage)) + (endColor[1] * percentage);
 			vertices[vertexcounter].b = (startColor[2] * (1 - percentage)) + (endColor[2] * percentage);
@@ -302,7 +345,52 @@ vector<vector<Vertex>> create_time_line(vector<double> time_linedata, vector<Ver
 	return vertices_matrix;
 
 }
-vector<double> readTime(string Filename) {
+vector<double> readPressure_pathline(string Filename) {
+	vector<double> time;
+	ifstream time_str;
+
+
+	time_str.open(Filename);
+	string line_str;
+	string::size_type sz;
+	int zahler = 0;
+	int StartIndexSection = 0; //0=false 1= übergangszustand 2=true
+	bool EndIndexSection = false;
+
+	while (!time_str.eof())
+	{
+
+		time_str >> line_str;
+
+		if (line_str == "SCALARS" && StartIndexSection == 2)
+		{
+			EndIndexSection = true;
+		}
+
+		
+
+		if (StartIndexSection == 2 && !EndIndexSection)// All conditions med --> here starts actuall reading of section with line information
+		{
+			time.push_back(atof(line_str.c_str()));
+		}
+
+		if (line_str == "pressure")
+		{
+			StartIndexSection = 1;
+			zahler = 0;
+		}
+		else if (StartIndexSection == 1 && zahler == 4)
+		{
+			StartIndexSection = 2;
+		}
+		zahler++;
+		//cout << line_str << "  zahler: " << zahler << endl;
+	}
+
+	//int test2 = 5;
+	time_str.close();
+	return time;
+}vector<double> readTime(string Filename) {
 	vector<double> time;
 	ifstream time_str;
 

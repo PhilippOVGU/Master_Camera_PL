@@ -32,7 +32,16 @@ public:
 
 	void update() override {
 		view = glm::lookAt(position, position + lookAt, up);
+		//view = glm::lookAt(position, lookAt, up);
 		viewProj = projection * view;
+	}
+	void updatecenter(glm::vec3 v)  {
+		lookAt = v;
+		
+		update();
+	}
+	void setposition(glm::vec3 v) {
+		position = v;
 	}
 	void moveFront(float amount){
 		translate(glm::normalize(glm::vec3(1.0f,0.0f,1.0f)*lookAt) * amount);

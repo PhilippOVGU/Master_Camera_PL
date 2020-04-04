@@ -19,6 +19,7 @@ uniform mat4 u_invModelView; //ignoriert skalierung des bildes --> wenn nicht an
 void main(){
 
 gl_Position  = u_modelViewProj * vec4(a_position, 1.0f);
+
 v_color = a_color;
 //v_color=vec4(normalize(a_position),1.0f);
 //v_color=vec4(a_normal,1.0f);

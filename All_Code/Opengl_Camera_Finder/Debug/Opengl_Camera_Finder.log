@@ -1,70 +1,122 @@
 ﻿  main.cpp
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(46,45): warning C4305:  'initializing': truncation from 'double' to 'float'
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(47,41): warning C4305:  'initializing': truncation from 'double' to 'float'
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(248,14): warning C4101:  'normalVector': unreferenced local variable
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(288,21): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(312,20): warning C4101:  'sz': unreferenced local variable
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(380,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(535,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(536,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(537,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(568,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(569,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(570,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(48,44): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(49,43): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(53,40): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(54,37): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(55,38): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(56,40): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(57,39): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(291,14): warning C4101:  'normalVector': unreferenced local variable
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(331,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(355,20): warning C4101:  'sz': unreferenced local variable
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(400,20): warning C4101:  'sz': unreferenced local variable
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(468,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(623,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(624,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(625,17): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(656,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(657,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\readVTK.h(658,33): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(30,23): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(43,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:  'argument': conversion from '_Ty' to '_Ty', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         with
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         [
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:             _Ty=double
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         ]
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         and
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         [
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:             _Ty=float
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(113,45): warning C4244:         ]
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(114,45): warning C4244:  'argument': conversion from '_Ty' to '_Ty', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(114,45): warning C4244:         with
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(114,45): warning C4244:         [
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(114,45): warning C4244:             _Ty=double
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(114,45): warning C4244:         ]
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(114,45): warning C4244:         and
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(114,45): warning C4244:         [
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(114,45): warning C4244:             _Ty=float
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(114,45): warning C4244:         ]
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(115,45): warning C4244:  'argument': conversion from '_Ty' to '_Ty', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(115,45): warning C4244:         with
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(115,45): warning C4244:         [
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(115,45): warning C4244:             _Ty=double
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(115,45): warning C4244:         ]
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(115,45): warning C4244:         and
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(115,45): warning C4244:         [
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(115,45): warning C4244:             _Ty=float
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(115,45): warning C4244:         ]
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(134,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(136,24): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(167,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(174,16): warning C4244:  'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(174,16): warning C4244:         with
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(174,16): warning C4244:         [
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(174,16): warning C4244:             _Rep=std::chrono::system_clock::rep
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(174,16): warning C4244:         ]
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(177,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(201,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(203,26): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(221,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(223,26): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(234,24): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(237,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(257,24): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(264,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(155,42): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(156,45): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(202,33): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(209,35): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(268,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(411,34): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(478,72): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(504,52): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(549,44): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
-C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(554,33): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(125,45): warning C4244:  'argument': conversion from '_Ty' to '_Ty', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(125,45): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(125,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(125,45): warning C4244:             _Ty=double
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(125,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(125,45): warning C4244:         and
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(125,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(125,45): warning C4244:             _Ty=float
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(125,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(126,45): warning C4244:  'argument': conversion from '_Ty' to '_Ty', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(126,45): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(126,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(126,45): warning C4244:             _Ty=double
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(126,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(126,45): warning C4244:         and
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(126,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(126,45): warning C4244:             _Ty=float
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(126,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(127,45): warning C4244:  'argument': conversion from '_Ty' to '_Ty', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(127,45): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(127,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(127,45): warning C4244:             _Ty=double
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(127,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(127,45): warning C4244:         and
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(127,45): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(127,45): warning C4244:             _Ty=float
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(127,45): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(168,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(172,30): warning C4244:  '=': conversion from '_Ty' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(172,30): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(172,30): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(172,30): warning C4244:             _Ty=double
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(172,30): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(176,16): warning C4244:  'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(176,16): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(176,16): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(176,16): warning C4244:             _Rep=std::chrono::system_clock::rep
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(176,16): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(179,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(184,42): warning C4244:  '=': conversion from '_Ty' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(184,42): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(184,42): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(184,42): warning C4244:             _Ty=double
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(184,42): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(203,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(205,26): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(223,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(225,26): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(236,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(239,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(259,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(266,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(353,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(355,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(386,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(393,16): warning C4244:  'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(393,16): warning C4244:         with
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(393,16): warning C4244:         [
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(393,16): warning C4244:             _Rep=std::chrono::system_clock::rep
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(393,16): warning C4244:         ]
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(396,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(420,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(422,26): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(440,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(442,26): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(453,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(456,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(476,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(483,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(543,41): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(544,37): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(545,39): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(546,40): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(547,39): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(553,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(563,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(582,29): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(647,41): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(648,37): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(649,39): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(650,40): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(651,39): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(654,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(656,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(677,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(688,28): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(689,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(691,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\utility.h(693,29): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(192,42): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(193,45): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(239,33): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(247,35): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(320,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(488,34): warning C4806:  '!=': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(557,72): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(583,52): warning C4244:  'argument': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(628,44): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(633,33): warning C4244:  'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\main.cpp(732,31): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
   Opengl_Camera_Finder.vcxproj -> C:\Users\Philipp\Desktop\Schule\Master\Git_Master\All_Code\Opengl_Camera_Finder\Debug\Opengl_Camera_Finder.exe

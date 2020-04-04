@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdint>
 #include "glm/glm.hpp"
+#include <vector>
 
 struct Position {
 	float x, y, z;
@@ -28,5 +29,13 @@ struct Vertex
 	
 
 
+	
+};
+struct kmenashelperformat
+{
+	Vertex kmeanspoint;
+	std::vector<Vertex> assignedpoints;
+	std::vector < std::vector<Vertex>> verticesoutput;
+	std::vector<Vertex > vectorVertexoutput;
 	
 };

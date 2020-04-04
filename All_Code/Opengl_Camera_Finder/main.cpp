@@ -55,16 +55,18 @@ int main(int argc, char** argv) {
 	//	isLinedata = false;
 	//}
 	//cout << "islinedata: " << isLinedata << endl;
-	//string Filename_aorta = "Aorta_mesh.vtk";
-	string Filename_aorta = "cube.vtk";
+	string Filename_aorta = "Aorta_mesh.vtk";
+	//string Filename_aorta = "cube.vtk";
 	//string Filename_aorta = "Aorta_pathlines.vtk";
 	//string Filename_aorta = "cube_pathlines.vtk";
 	//string Filename_aorta = "flat_pathlines.vtk";
 	bool isLinedata = false;
 	//bool isLinedata = true;
-
-	
-
+	bool enablediscratecolor = false; //enable if other 3 are disabled for disrete color
+	bool PCAstart = true;
+	bool kmeans_enable = true;
+	bool zoomactive = true;
+	float zoompercentag = 1;
 
 	SDL_Window* window;
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -114,6 +116,7 @@ int main(int argc, char** argv) {
 	uint64_t numVertices = 0;
 	std::vector<uint32_t> indices;
 	std::vector<double> time_linedata;
+	std::vector<double> pressure_linedata;
 	
 
 
@@ -127,12 +130,14 @@ int main(int argc, char** argv) {
 	vector<double> upLimit = upperBound(linetimesteps, maximumtime);
 	vector<double> lowLimit = lowerBound(linetimesteps, maximumtime);
 	vector<Vertex> swapVertices;
+	
 	if (isLinedata)
 	{
 		
 		
 		indices = readIndices_Line(Filename_aorta);
 		time_linedata =readTime(Filename_aorta);
+		pressure_linedata=readPressure_pathline(Filename_aorta);
 
 		double maxlineTime = findMax(time_linedata);
 
@@ -144,9 +149,42 @@ int main(int argc, char** argv) {
 		indices = readIndices_Vertex(Filename_aorta);
 		
 		vertices_matrix = read_all_wss_mag(Filename_aorta, vertices);
+		if (enablediscratecolor)
+		{
+			vertices_matrix = discritecolor(vertices_matrix);
+		}
+		
 		cout << "done with loading" << endl;
 	}
-	int testkmean=kmeans(vertices_matrix);
+	kmenashelperformat kmeansoutput;
+	Vertex testkmean;
+//	for (size_t i = 0; i < 50; i++)
+//{
+//	kmeansoutput = kmeans(vertices_matrix);
+//	testkmean = kmeansoutput.kmeanspoint;
+//	//cout << "x: " << testkmean.x << "y: " << testkmean.y << "z: " << testkmean.z << "data: "<<testkmean.data<< endl;
+//	Sleep(1000);
+//}
+	if (kmeans_enable)
+	{
+		if (!isLinedata)
+		{
+			cout << "ich bin hier aus irgendinem grund" << endl;
+			kmeansoutput = kmeans(vertices_matrix);
+			testkmean = kmeansoutput.kmeanspoint;
+			vertices_matrix = kmeansoutput.verticesoutput;
+		}
+		else
+		{
+			kmeansoutput = kmeans_pathline(vertices, pressure_linedata);
+			testkmean = kmeansoutput.kmeanspoint;
+		}
+
+	}
+
+	
+
+
 
 	numIndices = indices.size();
 	numVertices = vertices.size();
@@ -181,7 +219,7 @@ int main(int argc, char** argv) {
 
 
 	meshShader shader("mesh_vs.glsl", "mesh_fs.glsl");
-	bool test = true;
+	//bool test = true;
 	if (isLinedata)
 	{
 		Shader shader("basic_vs.glsl", "basic_fs.glsl", "basic_gs.glsl");
@@ -201,6 +239,7 @@ int main(int argc, char** argv) {
 	int colorUniformLocation = glGetUniformLocation(shader.getShaderId(), "u_color");
 	if (!colorUniformLocation != -1) {
 		glUniform4f(colorUniformLocation, 1.0f, 0.0f, 1.0f, 1.0f);
+		
 	}
 	
 	
@@ -212,8 +251,10 @@ int main(int argc, char** argv) {
 	
 	
 	FPSCamera camera(90.0f, 800.0f, 600.0f);
-	camera.translate(glm::vec3(0.0f, 0.0f, 5.0f));
-	camera.update();
+	//Camera camera(90.0f, 800.0f, 600.0f);
+	//camera.translate(glm::vec3(0.0f, 0.0f, 5.0f));
+	//camera.translate(glm::vec3(testkmean.x, testkmean.y, testkmean.z));
+	//camera.update();
 	//rotationsmatrix
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::scale(model, glm::vec3(1.5f));
@@ -234,6 +275,7 @@ int main(int argc, char** argv) {
 	int invModelViewLocation = glGetUniformLocation(shader.getShaderId(), "u_invModelView");
 
 	glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -4.0f));
+	
 
 	float time = 0.0f;
 	float delta = 0.02f;
@@ -261,9 +303,20 @@ int main(int argc, char** argv) {
 	int linetimecounter = 0;
 	bool changdata = true;
 	int numtimesteps = count_timesteps(Filename_aorta);
-
+	//vector<float> PCAView;
+	//if (!isLinedata)
+	//{
+	//	PCAView = PCA(vertices);
+	//}
+	//else
+	//{
+	//	PCAView = PCA(kmeansoutput.assignedpoints);
+	//	
+	//}
 	vector<float> PCAView =PCA(vertices);
-	bool PCAstart = true;
+	
+	//vector<float> PCAView =PCA(kmeansoutput.assignedpoints);
+	
 
 	for (size_t i = 0; i < linetimesteps; i++)
 	{
@@ -272,6 +325,12 @@ int main(int argc, char** argv) {
 	double linetimemaximum = findMax(time_linedata);
 	vector<double> linetimelowerlimit = lowerBound(linetimesteps, linetimemaximum);
 	vector<double> linetimeuperlimit = upperBound(linetimesteps, linetimemaximum);
+
+	int testcounter = 0;
+	int horzcount = 0;
+	int vertcounter = 0;
+	int vertcounter2 = 0;
+	
 	while (true) {
 		
 		
@@ -395,13 +454,32 @@ int main(int argc, char** argv) {
 			break;
 		}
 		// PCA Based start rotation
-		/*if (PCAstart)
+		if (PCAstart)
 		{
-			model = glm::rotate(model, 1.45f, glm::vec3(PCAView[0], PCAView[1], PCAView[2]));
+			//testkmean.x = -0.5;
+			//testkmean.y = 0;
+			//testkmean.z = 0;
+			//cout << "Kmeanstranslate: " << endl;
+			cout << "x: " << testkmean.x << "y: " << testkmean.y << "z: " << testkmean.z << endl;
+			//camera.translate(glm::vec3(testkmean.x, testkmean.y, testkmean.z));
+			//camera.update();
+			//camera.updatecenter(glm::vec3(0.273, 0.347, -0.548));
+			//camera.updatecenter(glm::vec3(0.0f, 0.0f, 0.0f));
+			//camera.translate(glm::vec3(0.273,0.347,-0.548));
+			//camera.update();
+			
+			camera.moveFront(-1 * cameraSpeed);
+
+			model = glm::rotate(model, 1.57f, glm::vec3(PCAView[0], PCAView[1], PCAView[2]));
+			
 			camera.update();
+			//camera.moveFront(-1 * cameraSpeed);
+			////camera.translate(glm::vec3(0.5*PCAView[0], 0.5 * PCAView[1], 0.5 * PCAView[2]));
+			//camera.update();
 			PCAstart = false;
 
-		}*/
+
+		}
 		
 		
 
@@ -414,6 +492,8 @@ int main(int argc, char** argv) {
 		if (buttonQ)
 		{
 			camera.moveFront(-delta * cameraSpeed);
+			//camera.moveSidways(-delta * cameraSpeed);
+			//camera.translate(glm::vec3(2.0f, 0.0f, 0.0f));
 			camera.update();
 		}
 		if (buttonE)
@@ -447,16 +527,16 @@ int main(int argc, char** argv) {
 		}
 		if (buttonX)
 		{
-			//model = glm::rotate(model, 0.5f * delta, glm::vec3(0, 0.5f, 0.5f));
-			//model = glm::rotate(model, 0.5f * delta, glm::vec3(PCAView[0], PCAView[1], PCAView[2]));
-			
-			//camera.moveSidways(delta* cameraSpeed); 
+			//camera.updatecenter(glm::vec3(0.5f, 0.0f, 0.0f));
+			//camera.updatecenter(glm::vec3(0.165017396f, 0.171928883f, -0.257190108f));
+			model = glm::rotate(model, 0.5f * delta, glm::vec3(0, 0.5f, 0.5f));
 			camera.update();
 		}
 		if (buttonY)
 		{
 			model = glm::rotate(model, 0.5f * delta, glm::vec3(0, -0.5f, -0.5f));
 			//camera.moveSidways(delta* cameraSpeed); 
+			//camera.setposition(glm::vec3(0.0f, 0.0f, 0.0f));
 			camera.update();
 		}
 		
@@ -567,16 +647,141 @@ int main(int argc, char** argv) {
 		
 		
 		
-		
-	
-		
-
 	
 
 
+		// 3 bytes per pixel (RGB), 1x1 bitmap
+		unsigned char horzpixels[1 * 600 * 3] = { 0 };
+		glReadPixels(0, 0, 600, 1, GL_RGB, GL_UNSIGNED_BYTE, horzpixels);
+		//unsigned char horzpixels2[1 * 800 * 3] = { 0 };
+		//glReadPixels(0,1800 , 600, 1, GL_RGB, GL_UNSIGNED_BYTE, horzpixels2);
+		unsigned char vertpixels[1 * 600 * 3] = { 0 };
+		glReadPixels(0, 0, 1, 600, GL_RGB, GL_UNSIGNED_BYTE, vertpixels);
+		unsigned char vertpixels2[1 * 600 * 3] = { 0 };
+		glReadPixels(799, 0, 1, 600, GL_RGB, GL_UNSIGNED_BYTE, vertpixels2);
+		horzcount = 0;
+		vertcounter = 0;
+		vertcounter2 = 0;
+		if (testcounter > 50)
+		{
 
-	
+			//std::cout << "r: " << static_cast<int>(pixels[1000]) << '\n';
+			//std::cout << "r: " << static_cast<int>(horzpixels2[0]) << '\n';
+			for (size_t i = 0; i < 600*3; i++)
+			{
+				if (horzpixels[i] == '\0') {
+					horzcount = horzcount + 1;
+				}
+				if (vertpixels[i] == '\0') {
+					vertcounter = vertcounter + 1;
+				}
 
+			}
+			for (size_t i = 0; i < 600*3; i++)
+			{
+				if (vertpixels2[i] == '\0') {
+					vertcounter2 = vertcounter2 + 1;
+				}
+			}
+
+			//zoom function stop at corner
+			//if (horzcount==600*3)
+			//{
+			//	//cout << vertcounter2 << endl;
+			//	//cout << "unten frei" << endl;
+			//	if (vertcounter == 600 * 3)
+			//	{
+			//		if (vertcounter2==800*3)
+			//		{
+			//			if (zoomactive)
+			//			{
+			//				//cout << "links auch --> zzooom" << endl;
+			//				camera.moveFront(0.006 * cameraSpeed);
+			//				camera.update();
+
+			//			}
+			//		}
+			//		else
+			//		{
+			//			zoomactive = false;
+			//		}
+
+
+			//	}
+			//	else
+			//	{
+			//		zoomactive = false;
+			//	}
+			//}
+			//else
+			//{
+			//	zoomactive = false;
+			//}
+
+			//zoom function stop at corner
+			if (horzcount == 600 * 3)
+			{
+				
+				//cout << vertcounter2 << endl;
+				//cout << "unten frei" << endl;
+				if (vertcounter == 600 * 3)
+				{
+					if (vertcounter2 == 600 * 3)
+					{
+						if (zoomactive)
+						{
+							//cout << "links auch --> zzooom" << endl;
+							camera.moveFront(0.006 * cameraSpeed);
+							camera.update();
+
+						}
+					}
+					else
+					{
+						//cout << "bedingung: " << (int)round(600 * 3 * zoompercentag) << "horzcounter:" << vertcounter2 << endl;
+						//cout << "ich bin shuld" << endl;
+						zoomactive = false;
+					}
+
+
+				}
+				else
+				{
+
+					//cout << "ich bin shuld2" << endl;
+					zoomactive = false;
+				}
+			}
+			else
+			{
+				//cout << "bedingung: " << (int)round(600 * 3 * zoompercentag) << "horzcounter:" << horzcount << endl;
+				//cout << "ich bin shuld3" << endl;
+				zoomactive = false;
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		}
+
+
+
+
+
+
+
+
+
+		testcounter = testcounter + 1;
 
 
 
